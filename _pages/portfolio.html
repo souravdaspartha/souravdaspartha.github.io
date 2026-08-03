@@ -7,8 +7,14 @@ author_profile: true
 
 {% include base_path %}
 
+{% assign employers = "Nippon Koei Bangladesh Ltd.|Engineering and Planning Consultants Ltd.|Image Research and Consultancy Ltd." | split: "|" %}
 
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
+{% for employer in employers %}
+  <h2>{{ employer }}</h2>
+  {% for post in site.portfolio %}
+    {% if post.employer == employer %}
+      {% include archive-single.html %}
+    {% endif %}
+  {% endfor %}
 {% endfor %}
 
