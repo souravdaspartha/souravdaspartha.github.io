@@ -4,8 +4,8 @@ excerpt: "Traffic survey supervision and thematic mapping, including DEM outputs
 collection: portfolio
 ---
 
-**Engineering and Planning Consultants Ltd. | Funded by World Bank | 2021 – 2024**
-**Role:** Junior Urban / Transport Planner
+**Engineering and Planning Consultants Ltd. | Funded by World Bank | Sep 2022 – Dec 2022**
+**Role:** Junior GIS Expert
 
 ## What I did
 
