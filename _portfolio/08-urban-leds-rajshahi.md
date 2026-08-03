@@ -2,6 +2,7 @@
 title: "Urban LEDS II: Open Green Space Plan for Rajshahi City Corporation (RCC)."
 excerpt: "Urban natural-asset and tree survey with ecosystem mapping from rectified satellite imagery and field verification."
 collection: portfolio
+employer: "Image Research and Consultancy Ltd."
 ---
 
 **Image Research and Consultancy Ltd. | Funded by UN-Habitat | 2018 – 2021**
