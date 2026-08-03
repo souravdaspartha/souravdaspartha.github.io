@@ -15,10 +15,10 @@ Currently a Junior Traffic and Transportation Planner at Nippon Koei Bangladesh 
 
 The Comprehensive Transport Masterplan for Gazipur City Corporation, where I have:
 
-- Built a four step travel demand model in TransCAD from scratch, including the public transport component, and produced final outputs comparing existing and           forecast demand
+- Built a four step travel demand model in TransCAD from scratch, including the public transport component, and produced final outputs comparing existing and forecast demand
 - Run freight and truck surveys and collected terminal demand data, working with large field datasets to support city scale freight demand estimation
 - Handled network preparation, OD matrix development, and highway and public transport network design, with supporting spatial and network analysis in GIS
-- Worked on the link between transport and urban planning, developing road network and demand management options, intermodal integration, and policies to close the     land use and transport integration gap
+- Worked on the link between transport and urban planning, developing road network and demand management options, intermodal integration, and policies to close the land use and transport integration gap
 
 ## What I'm curious about
 
