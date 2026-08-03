@@ -5,7 +5,7 @@ collection: portfolio
 ---
 
 **Nippon Koei Bangladesh Ltd. | Funded by JICA | Jan 2025 – Apr 2025**
-**Role:** Publi/Private Bus Expert
+**Role:** Public/Private Bus Expert
 
 ## What I did
 
