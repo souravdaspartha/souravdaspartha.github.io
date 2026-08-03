@@ -2,6 +2,7 @@
 title: "Slum-based Citizen Action Network (SCAN) Project"
 excerpt: "GPS-based boundary demarcation and GIS database development for slum settlements, combining digitisation with field verification."
 collection: portfolio
+employer: "Image Research and Consultancy Ltd."
 ---
 
 **Image Research and Consultancy Ltd. | Funded by Solidarités International | Oct 2018 – Jun 2020**
