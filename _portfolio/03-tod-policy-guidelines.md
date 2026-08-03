@@ -2,6 +2,7 @@
 title: "Policy and Guidelines for Transit-Oriented Development along Mass Transit Corridors"
 excerpt: "Land-use and real-estate demand study supporting TOD policy along Dhaka's mass transit corridors, with GIS and CAD database development."
 collection: portfolio
+employer: "Nippon Koei Bangladesh Ltd."
 ---
 
 **Nippon Koei Bangladesh Ltd. | Funded by JICA | Nov 2024 – Jun  2026**
