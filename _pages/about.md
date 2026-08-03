@@ -35,5 +35,5 @@ The Comprehensive Transport Masterplan for Gazipur City Corporation, where I hav
 
 ## Background
 
-- MS, GIS for Environment and Development, Jahangirnagar University
+- MS, Geographic Information System, Jahangirnagar University
 - BURP, Urban and Regional Planning, Jahangirnagar University
