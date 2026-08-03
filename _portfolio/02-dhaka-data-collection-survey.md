@@ -5,7 +5,7 @@ collection: portfolio
 ---
 
 **Nippon Koei Bangladesh Ltd. | Funded by JICA | Jan 2025 – Apr 2025**
-**Role:** Junior Traffic and Transportation Planner
+**Role:** Publi/Private Bus Expert
 
 ## What I did
 
