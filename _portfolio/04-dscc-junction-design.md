@@ -2,6 +2,7 @@
 title: "Traffic Study cum Junction Design under Dhaka City Neighborhood Upgrading Project in DSCC."
 excerpt: "Traffic management planning and intersection design for DSCC, including layouts, land-use maps and traffic-flow mapping."
 collection: portfolio
+employer: "Engineering and Planning Consultants Ltd."
 ---
 
 **Engineering and Planning Consultants Ltd. | DSCC, funded by World Bank | Sep 2021 – Aug 2022**
