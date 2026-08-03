@@ -1,7 +1,7 @@
 
 ---
 title: "Data Collection Survey on Public Transport Mode and Operaion in Dhaka"
-excerpt: "Bus operations survey across public and private operators, covering fleet size, regulation, ownership and restricted zones."
+excerpt: "Bus operations survey across public and private operators."
 collection: portfolio
 ---
 
