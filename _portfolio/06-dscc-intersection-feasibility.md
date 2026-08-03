@@ -2,6 +2,7 @@
 title: "Feasibility Study with Improvement of Different Intersections Including Signals in Dhaka South City Corporation (DSCC) Area."
 excerpt: "Analysis of traffic, pedestrian, OD, travel-time, delay and parking surveys, with LOS and ADT calculation and intersection design."
 collection: portfolio
+employer: "Engineering and Planning Consultants Ltd."
 ---
 
 **Engineering and Planning Consultants Ltd. | Funded by DSCC | Jan 2023 – Feb 2024**
