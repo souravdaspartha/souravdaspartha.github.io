@@ -4,7 +4,7 @@ excerpt: "Four-step travel demand model built from scratch in TransCAD, with pre
 collection: portfolio
 ---
 
-**Nippon Koei Bangladesh Ltd. | Funded by DTCA | 2024 – present**
+**Nippon Koei Bangladesh Ltd. | Funded by DTCA | Mar 2024 – present**
 **Role:** Junior Traffic and Transportation Planner
 
 A city-scale transport master plan combining a pre-feasibility study of the mass transit network with conceptual design of a truck terminal.
