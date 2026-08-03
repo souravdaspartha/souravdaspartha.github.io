@@ -2,6 +2,7 @@
 title: "Preparation of Comprehensive Transport Masterplan with Pre-feasibility Study and Conceptual Design of Truck Terminal for Gazipur City Corporation"
 excerpt: "Four-step travel demand model built from scratch in TransCAD, with pre-feasibility study of a mass transit network and conceptual design of a truck terminal."
 collection: portfolio
+employer: "Nippon Koei Bangladesh Ltd."
 ---
 
 **Nippon Koei Bangladesh Ltd. | Funded by DTCA | Mar 2024 – present**
