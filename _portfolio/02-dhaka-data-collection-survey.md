@@ -4,7 +4,7 @@ excerpt: "Bus operations survey across public and private operators, covering re
 collection: portfolio
 ---
 
-**Nippon Koei Bangladesh Ltd. | Funded by JICA | 2024 – present**
+**Nippon Koei Bangladesh Ltd. | Funded by JICA | Jan 2025 – Apr 2025**
 **Role:** Junior Traffic and Transportation Planner
 
 ## What I did
