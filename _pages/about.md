@@ -9,10 +9,10 @@ redirect_from:
 
 Transport planner and modeller in Dhaka, Bangladesh. I build travel demand models for cities where the data is thin, the traffic is mixed, and a large share of the network runs on informal modes. Currently a **Junior Traffic and Transportation Planner** at Nippon Koei Bangladesh Ltd., working on the Comprehensive Transport Masterplan for Gazipur City Corporation.
 
-- 🌍 **Expertise**: Travel Demand Modelling, Freight Modelling, GIS & Network Analysis
-- 🔭 **Current Focus**: Four-step modelling and mass transit pre-feasibility
+- 🌍 **Expertise**: Travel Demand Modelling, Intersection Design, Spatial Analysis
+- 🔭 **Current Focus**: Four-step Modelling, Trffic Impact Assessment, Traffic Management Plan
 - 🎓 **Education**: MS GIS for Environment and Development, BURP Urban & Regional Planning (Jahangirnagar University)
-- 💼 **Industry Experience**: Transport Planning, Mass Transit, TOD, Road Safety
+- 💼 **Industry Experience**: Transport Planning, Transit Oriented Development, Road Safety Analysis
 
 ---
 
@@ -22,7 +22,7 @@ Transport planner and modeller in Dhaka, Bangladesh. I build travel demand model
 
 ![TransCAD](https://img.shields.io/badge/TransCAD-1F4E79?style=for-the-badge)![PTV Vissim](https://img.shields.io/badge/PTV_Vissim-005CA9?style=for-the-badge)![SIDRA](https://img.shields.io/badge/SIDRA_Intersection-C8102E?style=for-the-badge)
 
-**Modelling Expertise:** Four-step travel demand modelling, log-linear trip production, nested logit mode choice, traffic assignment, OD matrix development, freight trip generation and volume estimation
+**Modelling Expertise:** Four-step travel demand modelling, Network analysis and performance evaluation, Intersection analysis and capacity assessment, Scenario testing and impact assessment
 
 ### **GIS & Spatial Analysis**
 
