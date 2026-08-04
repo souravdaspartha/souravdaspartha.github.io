@@ -24,6 +24,6 @@ A city-scale transport master plan combining a pre-feasibility study of the mass
 
 ## Selected output
 
-![Home-based work gravity desire lines, Gazipur travel demand model](/images/gazipur-desire-lines.png)
+<img src="/images/gazipur-desire-lines.png" width="500" alt="Home-based work gravity desire lines, Gazipur travel demand model">
 
 *Gravity desire lines for home-based work trips, Gazipur City Corporation.*
