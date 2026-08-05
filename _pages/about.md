@@ -18,13 +18,25 @@ Transport planner and modeller in Dhaka, Bangladesh. I build travel demand model
 
 ## 🛠️ Tech Stack & Skills
 
-| | |
-|---|---|
-| **Transport Modelling** | ![TransCAD](https://img.shields.io/badge/TransCAD-1F4E79?style=for-the-badge) ![PTV Vissim](https://img.shields.io/badge/PTV_Vissim-005CA9?style=for-the-badge) ![SIDRA](https://img.shields.io/badge/SIDRA_Intersection-C8102E?style=for-the-badge) |
-| **GIS & Spatial Analysis** | ![ArcGIS](https://img.shields.io/badge/ArcGIS_Pro-2C5282?style=for-the-badge&logo=esri&logoColor=white) ![QGIS](https://img.shields.io/badge/QGIS-589632?style=for-the-badge&logo=qgis&logoColor=white) |
-| **Programming & Statistics** | ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white) ![Stata](https://img.shields.io/badge/Stata-1A5F7A?style=for-the-badge) |
-| **Design & CAD** | ![AutoCAD](https://img.shields.io/badge/AutoCAD-E51050?style=for-the-badge&logo=autodesk&logoColor=white) ![Civil 3D](https://img.shields.io/badge/Civil_3D-0696D7?style=for-the-badge&logo=autodesk&logoColor=white) ![SketchUp](https://img.shields.io/badge/SketchUp-005F9E?style=for-the-badge&logo=sketchup&logoColor=white) |
+<div style="border-left: 4px solid #1F4E79; padding-left: 12px; margin-bottom: 16px;">
+<strong>Transport Modelling</strong><br>
+<img src="https://img.shields.io/badge/TransCAD-1F4E79?style=for-the-badge"> <img src="https://img.shields.io/badge/PTV_Vissim-005CA9?style=for-the-badge"> <img src="https://img.shields.io/badge/SIDRA_Intersection-C8102E?style=for-the-badge">
+</div>
 
+<div style="border-left: 4px solid #2C5282; padding-left: 12px; margin-bottom: 16px;">
+<strong>GIS & Spatial Analysis</strong><br>
+<img src="https://img.shields.io/badge/ArcGIS_Pro-2C5282?style=for-the-badge&logo=esri&logoColor=white"> <img src="https://img.shields.io/badge/QGIS-589632?style=for-the-badge&logo=qgis&logoColor=white">
+</div>
+
+<div style="border-left: 4px solid #3776AB; padding-left: 12px; margin-bottom: 16px;">
+<strong>Programming & Statistics</strong><br>
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white"> <img src="https://img.shields.io/badge/Stata-1A5F7A?style=for-the-badge">
+</div>
+
+<div style="border-left: 4px solid #E51050; padding-left: 12px; margin-bottom: 16px;">
+<strong>Design & CAD</strong><br>
+<img src="https://img.shields.io/badge/AutoCAD-E51050?style=for-the-badge&logo=autodesk&logoColor=white"> <img src="https://img.shields.io/badge/Civil_3D-0696D7?style=for-the-badge&logo=autodesk&logoColor=white"> <img src="https://img.shields.io/badge/SketchUp-005F9E?style=for-the-badge&logo=sketchup&logoColor=white">
+</div>
 ---
 
 ## 🔬 Research
