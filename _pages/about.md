@@ -18,8 +18,6 @@ Transport planner and modeller in Dhaka, Bangladesh. I build travel demand model
 
 ## 🛠️ Tech Stack & Skills
 
-## 🛠️ Tech Stack & Skills
-
 <table style="width:100%; border-collapse: collapse;">
 <tr style="border-bottom: 1px solid rgba(128,128,128,0.2);">
 <td style="border-left: 5px solid #1F4E79; padding: 12px; width: 30%;"><strong>Transport Modelling</strong></td>
