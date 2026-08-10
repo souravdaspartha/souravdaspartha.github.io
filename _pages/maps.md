@@ -1,9 +1,3 @@
-That's the cause: you copied the rendered version, not the raw text. You can see it in what you pasted — the front matter has turned into "Layout / archive / Title / Maps" instead of layout: archive between two --- lines. The file card I sent opens in a viewer that renders it.
-
-Without proper front matter, permalink: /maps/ doesn't exist, so the page 404s.
-
-Copy from this code block instead — it'll paste as raw text:
-
 ---
 layout: archive
 title: "Maps"
