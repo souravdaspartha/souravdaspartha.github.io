@@ -7,7 +7,7 @@ author_profile: true
 
 ## Trip Desire Lines, Gazipur City Corporation
 
-Gravity model desire lines by trip purpose and forecast year, from the four-step travel demand model built for the Comprehensive Transport Masterplan. Select a purpose and a year to compare.
+Gravity model desire lines by trip purpose and forecast year, from the four-step travel demand model built for the Comprehensive Transport Masterplan. Select a purpose and a year to compare. Click any map to open it full size.
 
 <div style="margin: 18px 0 10px;">
   <div style="font-size: 13px; font-weight: 600; margin-bottom: 6px;">Trip purpose</div>
@@ -24,7 +24,9 @@ Gravity model desire lines by trip purpose and forecast year, from the four-step
   <button class="year-btn" data-val="2044" onclick="pickYear(this)">2044</button>
 </div>
 
-<img id="desireMap" src="/images/desire-hbw-base.png" width="100%" alt="Trip desire lines" style="border: 1px solid rgba(128,128,128,0.3);">
+<a id="desireLink" href="/images/desire-hbw-base.png" target="_blank">
+<img id="desireMap" src="/images/desire-hbw-base.png" alt="Trip desire lines" style="max-width: 450px; width: 100%; border: 1px solid rgba(128,128,128,0.3);">
+</a>
 
 <p><em id="desireCaption">Home-based work desire lines, base year.</em></p>
 
@@ -68,7 +70,9 @@ var purposeNames = {
 var yearNames = { base: 'base year', '2034': '2034 forecast', '2044': '2044 forecast' };
 
 function refresh() {
-  document.getElementById('desireMap').src = '/images/desire-' + currentPurpose + '-' + currentYear + '.png';
+  var path = '/images/desire-' + currentPurpose + '-' + currentYear + '.png';
+  document.getElementById('desireMap').src = path;
+  document.getElementById('desireLink').href = path;
   document.getElementById('desireCaption').innerText = purposeNames[currentPurpose] + ' desire lines, ' + yearNames[currentYear] + '.';
 }
 
