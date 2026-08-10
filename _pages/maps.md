@@ -7,7 +7,7 @@ author_profile: true
 
 ## Trip Desire Lines, Gazipur City Corporation
 
-Gravity model desire lines by trip purpose and forecast year, from the four-step travel demand model built for the Comprehensive Transport Masterplan. Select a purpose and a year to compare. Click any map to open it full size.
+Desire lines from the gravity model developed for the Gazipur Comprehensive Transport Masterplan, produced within a four-step travel demand framework. Each line shows the straight-line demand between two zones, indicating where trips want to go rather than the route they take. Width and colour are scaled to trip volume.
 
 <div style="margin: 18px 0 10px;">
   <div style="font-size: 13px; font-weight: 600; margin-bottom: 6px;">Trip purpose</div>
@@ -31,7 +31,7 @@ Gravity model desire lines by trip purpose and forecast year, from the four-step
 <p><em id="desireCaption">Home-based work desire lines, base year.</em></p>
 
 <p style="font-size: 13px; color: #777;">
-Legend breaks are classified independently for each year, so line widths are not directly comparable across years. Trip production rises substantially with the forecast year — read the legend values rather than the line weights when comparing.
+Each map is classified on its own volume range, so a thick line in the base year represents fewer trips than a thick line in 2044. The legend values offer a more reliable basis for comparison across years.
 </p>
 
 <p style="font-size: 13px; color: #777;">
