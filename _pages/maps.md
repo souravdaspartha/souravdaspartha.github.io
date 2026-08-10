@@ -25,7 +25,7 @@ Desire lines from the gravity model developed for the Gazipur Comprehensive Tran
 </div>
 
 <a id="desireLink" href="/images/desire-hbw-base.png" target="_blank">
-<img id="desireMap" src="/images/desire-hbw-base.png" alt="Trip desire lines" style="max-width: 450px; width: 100%; border: 1px solid rgba(128,128,128,0.3);">
+<img id="desireMap" src="/images/desire-hbw-base.png" alt="Trip desire lines" style="max-width: 550px; width: 100%; border: 1px solid rgba(128,128,128,0.3);">
 </a>
 
 <p><em id="desireCaption">Home-based work desire lines, base year.</em></p>
