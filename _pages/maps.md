@@ -59,6 +59,10 @@ Desire lines from the gravity model developed for the Gazipur Comprehensive Tran
 
 <p><em id="desireCaption">Home-based work desire lines, base year.</em></p>
 
+<p style="font-size: 13px; color: #777;">
+HBW: home-based work &nbsp;|&nbsp; HBE: home-based education &nbsp;|&nbsp; HBO: home-based other &nbsp;|&nbsp; NHB: non-home-based
+</p>
+
 <p style="font-size: 13px; color: #777; text-align: justify;">
 Each map is classified on its own volume range, so line widths are not directly comparable across years. Legend values give the actual volumes.
 </p>
@@ -92,6 +96,10 @@ Spatial distribution of trip lengths by purpose and forecast year, produced from
 
 <p><em id="tldCaption">Home-based work trip length distribution, base year.</em></p>
 
+<p style="font-size: 13px; color: #777;">
+HBW: home-based work &nbsp;|&nbsp; HBE: home-based education &nbsp;|&nbsp; HBO: home-based other &nbsp;|&nbsp; NHB: non-home-based
+</p>
+
 ---
 
 ## Highway Assignment, Gazipur City Corporation
@@ -119,10 +127,6 @@ Assigned link volumes from the traffic assignment step of the four-step travel d
 </a>
 
 <p><em id="asCaption">Assigned link volumes, base year.</em></p>
-
-<p style="font-size: 13px; color: #777;">
-HBW: home-based work &nbsp;|&nbsp; HBE: home-based education &nbsp;|&nbsp; HBO: home-based other &nbsp;|&nbsp; NHB: non-home-based
-</p>
 
 <style>
 .mapframe {
