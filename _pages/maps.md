@@ -1,5 +1,3 @@
-Here's the complete _pages/maps.md with justified paragraphs:
-
 ---
 layout: archive
 title: "Maps"
