@@ -8,7 +8,7 @@ author_profile: true
 ## Trip Production and Attraction, Gazipur City Corporation
 
 <p style="text-align: justify;">
-These maps present zonal trip production and attraction patterns for Gazipur City Corporation, derived from the trip generation step of the four-step travel demand model developed under the Gazipur Comprehensive Transport Masterplan. Production denotes trips originating from each zone, while attraction represents trips drawn to it, together forming the foundational input for subsequent distribution, modal choice, and assignment modelling stages.
+These maps present zonal trip production and attraction patterns for Gazipur City Corporation, derived from the trip generation step of the four-step travel demand model developed under the Gazipur Comprehensive Transport Masterplan. Production denotes trips originating from each zone, while attraction represents trips drawn to it, together forming the foundational input for subsequent distribution, mode choice, and assignment modelling stages.
 </p>
 
 <div style="margin: 18px 0 10px;">
@@ -63,6 +63,35 @@ Desire lines from the gravity model developed for the Gazipur Comprehensive Tran
 Each map is classified on its own volume range, so line widths are not directly comparable across years. Legend values give the actual volumes.
 </p>
 
+---
+
+## Trip Length Distribution, Gazipur City Corporation
+
+<p style="text-align: justify;">
+Spatial distribution of trip lengths by purpose and forecast year, produced from the distribution step of the four-step travel demand model. The pattern reflects how far trips travel from each zone, varying by purpose according to the deterrence function applied in the gravity model.
+</p>
+
+<div style="margin: 18px 0 10px;">
+  <div style="font-size: 13px; font-weight: 600; margin-bottom: 6px;">Trip purpose</div>
+  <button class="tld-btn" data-val="hbw" onclick="pickTld(this)">HBW</button>
+  <button class="tld-btn" data-val="hbe" onclick="pickTld(this)">HBE</button>
+  <button class="tld-btn" data-val="hbo" onclick="pickTld(this)">HBO</button>
+  <button class="tld-btn" data-val="nhb" onclick="pickTld(this)">NHB</button>
+</div>
+
+<div style="margin: 12px 0 18px;">
+  <div style="font-size: 13px; font-weight: 600; margin-bottom: 6px;">Year</div>
+  <button class="tld-year-btn" data-val="base" onclick="pickTldYear(this)">Base</button>
+  <button class="tld-year-btn" data-val="2034" onclick="pickTldYear(this)">2034</button>
+  <button class="tld-year-btn" data-val="2044" onclick="pickTldYear(this)">2044</button>
+</div>
+
+<a id="tldLink" href="/images/tld-hbw-base.png" target="_blank" title="Click to open full size">
+<img id="tldMap" class="mapframe" src="/images/tld-hbw-base.png" alt="Trip length distribution">
+</a>
+
+<p><em id="tldCaption">Home-based work trip length distribution, base year.</em></p>
+
 <p style="font-size: 13px; color: #777;">
 HBW: home-based work &nbsp;|&nbsp; HBE: home-based education &nbsp;|&nbsp; HBO: home-based other &nbsp;|&nbsp; NHB: non-home-based
 </p>
@@ -73,12 +102,12 @@ HBW: home-based work &nbsp;|&nbsp; HBE: home-based education &nbsp;|&nbsp; HBO: 
   max-width: 550px;
   height: 550px;
   object-fit: contain;
-  border: 1px solid rgba(128,128,128,0.3);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  border: 1px solid rgba(0,0,0,0.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
   border-radius: 4px;
   background: #fff;
 }
-.purpose-btn, .year-btn, .pa-btn, .pa-year-btn {
+.purpose-btn, .year-btn, .pa-btn, .pa-year-btn, .tld-btn, .tld-year-btn {
   padding: 7px 16px;
   margin-right: 6px;
   margin-bottom: 6px;
@@ -89,7 +118,8 @@ HBW: home-based work &nbsp;|&nbsp; HBE: home-based education &nbsp;|&nbsp; HBO: 
   color: inherit;
   font-size: 14px;
 }
-.purpose-btn.active, .year-btn.active, .pa-btn.active, .pa-year-btn.active {
+.purpose-btn.active, .year-btn.active, .pa-btn.active,
+.pa-year-btn.active, .tld-btn.active, .tld-year-btn.active {
   background: #1F4E79;
   color: #fff;
   border-color: #1F4E79;
@@ -101,6 +131,8 @@ var currentPA = 'prod';
 var currentPAYear = 'base';
 var currentPurpose = 'hbw';
 var currentYear = 'base';
+var currentTld = 'hbw';
+var currentTldYear = 'base';
 
 var paNames = { prod: 'Trip production by zone', attr: 'Trip attraction by zone' };
 var purposeNames = {
@@ -156,10 +188,31 @@ function pickYear(btn) {
   refresh();
 }
 
+function tldRefresh() {
+  var path = '/images/tld-' + currentTld + '-' + currentTldYear + '.png';
+  document.getElementById('tldMap').src = path;
+  document.getElementById('tldLink').href = path;
+  document.getElementById('tldCaption').innerText = purposeNames[currentTld] + ' trip length distribution, ' + yearNames[currentTldYear] + '.';
+}
+
+function pickTld(btn) {
+  currentTld = btn.dataset.val;
+  setActive('tld-btn', btn);
+  tldRefresh();
+}
+
+function pickTldYear(btn) {
+  currentTldYear = btn.dataset.val;
+  setActive('tld-year-btn', btn);
+  tldRefresh();
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('.pa-btn[data-val="prod"]').classList.add('active');
   document.querySelector('.pa-year-btn[data-val="base"]').classList.add('active');
   document.querySelector('.purpose-btn[data-val="hbw"]').classList.add('active');
   document.querySelector('.year-btn[data-val="base"]').classList.add('active');
+  document.querySelector('.tld-btn[data-val="hbw"]').classList.add('active');
+  document.querySelector('.tld-year-btn[data-val="base"]').classList.add('active');
 });
 </script>
