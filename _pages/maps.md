@@ -1,5 +1,3 @@
-Setting a fixed box for both, with object-fit: contain so nothing distorts:
-
 ---
 layout: archive
 title: "Maps"
