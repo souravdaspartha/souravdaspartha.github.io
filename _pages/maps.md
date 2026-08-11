@@ -87,7 +87,7 @@ Spatial distribution of trip lengths by purpose and forecast year, produced from
 </div>
 
 <a id="tldLink" href="/images/tld-hbw-base.png" target="_blank" title="Click to open full size">
-<img id="tldMap" class="mapframe" src="/images/tld-hbw-base.png" alt="Trip length distribution">
+<img id="tldMap" class="tldframe" src="/images/tld-hbw-base.png" alt="Trip length distribution">
 </a>
 
 <p><em id="tldCaption">Home-based work trip length distribution, base year.</em></p>
@@ -102,6 +102,13 @@ HBW: home-based work &nbsp;|&nbsp; HBE: home-based education &nbsp;|&nbsp; HBO: 
   max-width: 550px;
   height: 550px;
   object-fit: contain;
+  border: 1px solid rgba(0,0,0,0.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  border-radius: 4px;
+  background: #fff;
+}
+.tldframe {
+  max-width: 100%;
   border: 1px solid rgba(0,0,0,0.25);
   box-shadow: 0 8px 24px rgba(0,0,0,0.35);
   border-radius: 4px;
