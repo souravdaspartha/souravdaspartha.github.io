@@ -8,7 +8,7 @@ author_profile: true
 ## Trip Production and Attraction, Gazipur City Corporation
 
 <p style="text-align: justify;">
-Zonal trip productions and attractions from the trip generation step of the Gazipur Comprehensive Transport Masterplan, produced within a four-step travel demand framework. Production is the number of trips starting in a zone; attraction is the number ending there. These totals are the input to the distribution, mode choice, and assignment stages that follow. Colour is scaled to trip volume. 
+These maps present zonal trip production and attraction patterns for Gazipur City Corporation, derived from the trip generation step of the four-step travel demand model developed under the Gazipur Comprehensive Transport Masterplan. Production denotes trips originating from each zone, while attraction represents trips drawn to it, together forming the foundational input for subsequent distribution, mode choice, and assignment modelling stages.
 </p>
 
 <div style="margin: 18px 0 10px;">
@@ -92,6 +92,34 @@ Spatial distribution of trip lengths by purpose and forecast year, produced from
 
 <p><em id="tldCaption">Home-based work trip length distribution, base year.</em></p>
 
+---
+
+## Highway Assignment, Gazipur City Corporation
+
+<p style="text-align: justify;">
+Assigned link volumes from the traffic assignment step of the four-step travel demand model. Forecast years are presented under three scenarios: Do Nothing, retaining the existing network without intervention; Business as Usual, reflecting committed schemes already in the pipeline; and Masterplan, incorporating the full set of proposed network and demand management measures.
+</p>
+
+<div style="margin: 18px 0 10px;">
+  <div style="font-size: 13px; font-weight: 600; margin-bottom: 6px;">Year</div>
+  <button class="as-year-btn" data-val="base" onclick="pickAsYear(this)">Base</button>
+  <button class="as-year-btn" data-val="2034" onclick="pickAsYear(this)">2034</button>
+  <button class="as-year-btn" data-val="2044" onclick="pickAsYear(this)">2044</button>
+</div>
+
+<div id="scenarioRow" style="margin: 12px 0 18px; display: none;">
+  <div style="font-size: 13px; font-weight: 600; margin-bottom: 6px;">Scenario</div>
+  <button class="as-sc-btn" data-val="donothing" onclick="pickScenario(this)">Do Nothing</button>
+  <button class="as-sc-btn" data-val="bau" onclick="pickScenario(this)">Business as Usual</button>
+  <button class="as-sc-btn" data-val="masterplan" onclick="pickScenario(this)">Masterplan</button>
+</div>
+
+<a id="asLink" href="/images/assign-base.png" target="_blank" title="Click to open full size">
+<img id="asMap" class="mapframe" src="/images/assign-base.png" alt="Highway assignment">
+</a>
+
+<p><em id="asCaption">Assigned link volumes, base year.</em></p>
+
 <p style="font-size: 13px; color: #777;">
 HBW: home-based work &nbsp;|&nbsp; HBE: home-based education &nbsp;|&nbsp; HBO: home-based other &nbsp;|&nbsp; NHB: non-home-based
 </p>
@@ -114,7 +142,8 @@ HBW: home-based work &nbsp;|&nbsp; HBE: home-based education &nbsp;|&nbsp; HBO: 
   border-radius: 4px;
   background: #fff;
 }
-.purpose-btn, .year-btn, .pa-btn, .pa-year-btn, .tld-btn, .tld-year-btn {
+.purpose-btn, .year-btn, .pa-btn, .pa-year-btn,
+.tld-btn, .tld-year-btn, .as-year-btn, .as-sc-btn {
   padding: 7px 16px;
   margin-right: 6px;
   margin-bottom: 6px;
@@ -125,8 +154,8 @@ HBW: home-based work &nbsp;|&nbsp; HBE: home-based education &nbsp;|&nbsp; HBO: 
   color: inherit;
   font-size: 14px;
 }
-.purpose-btn.active, .year-btn.active, .pa-btn.active,
-.pa-year-btn.active, .tld-btn.active, .tld-year-btn.active {
+.purpose-btn.active, .year-btn.active, .pa-btn.active, .pa-year-btn.active,
+.tld-btn.active, .tld-year-btn.active, .as-year-btn.active, .as-sc-btn.active {
   background: #1F4E79;
   color: #fff;
   border-color: #1F4E79;
@@ -140,6 +169,8 @@ var currentPurpose = 'hbw';
 var currentYear = 'base';
 var currentTld = 'hbw';
 var currentTldYear = 'base';
+var currentAsYear = 'base';
+var currentScenario = 'donothing';
 
 var paNames = { prod: 'Trip production by zone', attr: 'Trip attraction by zone' };
 var purposeNames = {
@@ -149,6 +180,11 @@ var purposeNames = {
   nhb: 'Non-home-based'
 };
 var yearNames = { base: 'base year', '2034': '2034 forecast', '2044': '2044 forecast' };
+var scenarioNames = {
+  donothing: 'Do Nothing scenario',
+  bau: 'Business as Usual scenario',
+  masterplan: 'Masterplan scenario'
+};
 
 function setActive(group, btn) {
   document.querySelectorAll('.' + group).forEach(function (b) {
@@ -161,4 +197,95 @@ function paRefresh() {
   var path = '/images/pa-' + currentPA + '-' + currentPAYear + '.png';
   document.getElementById('paMap').src = path;
   document.getElementById('paLink').href = path;
-  document.getElementById('paCaption').inn
+  document.getElementById('paCaption').innerText = paNames[currentPA] + ', ' + yearNames[currentPAYear] + '.';
+}
+
+function pickPA(btn) {
+  currentPA = btn.dataset.val;
+  setActive('pa-btn', btn);
+  paRefresh();
+}
+
+function pickPAYear(btn) {
+  currentPAYear = btn.dataset.val;
+  setActive('pa-year-btn', btn);
+  paRefresh();
+}
+
+function refresh() {
+  var path = '/images/desire-' + currentPurpose + '-' + currentYear + '.png';
+  document.getElementById('desireMap').src = path;
+  document.getElementById('desireLink').href = path;
+  document.getElementById('desireCaption').innerText = purposeNames[currentPurpose] + ' desire lines, ' + yearNames[currentYear] + '.';
+}
+
+function pickPurpose(btn) {
+  currentPurpose = btn.dataset.val;
+  setActive('purpose-btn', btn);
+  refresh();
+}
+
+function pickYear(btn) {
+  currentYear = btn.dataset.val;
+  setActive('year-btn', btn);
+  refresh();
+}
+
+function tldRefresh() {
+  var path = '/images/tld-' + currentTld + '-' + currentTldYear + '.png';
+  document.getElementById('tldMap').src = path;
+  document.getElementById('tldLink').href = path;
+  document.getElementById('tldCaption').innerText = purposeNames[currentTld] + ' trip length distribution, ' + yearNames[currentTldYear] + '.';
+}
+
+function pickTld(btn) {
+  currentTld = btn.dataset.val;
+  setActive('tld-btn', btn);
+  tldRefresh();
+}
+
+function pickTldYear(btn) {
+  currentTldYear = btn.dataset.val;
+  setActive('tld-year-btn', btn);
+  tldRefresh();
+}
+
+function asRefresh() {
+  var path, caption;
+  if (currentAsYear === 'base') {
+    path = '/images/assign-base.png';
+    caption = 'Assigned link volumes, base year.';
+    document.getElementById('scenarioRow').style.display = 'none';
+  } else {
+    path = '/images/assign-' + currentAsYear + '-' + currentScenario + '.png';
+    caption = 'Assigned link volumes, ' + currentAsYear + ' ' + scenarioNames[currentScenario] + '.';
+    document.getElementById('scenarioRow').style.display = 'block';
+  }
+  document.getElementById('asMap').src = path;
+  document.getElementById('asLink').href = path;
+  document.getElementById('asCaption').innerText = caption;
+}
+
+function pickAsYear(btn) {
+  currentAsYear = btn.dataset.val;
+  setActive('as-year-btn', btn);
+  asRefresh();
+}
+
+function pickScenario(btn) {
+  currentScenario = btn.dataset.val;
+  setActive('as-sc-btn', btn);
+  asRefresh();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('.pa-btn[data-val="prod"]').classList.add('active');
+  document.querySelector('.pa-year-btn[data-val="base"]').classList.add('active');
+  document.querySelector('.purpose-btn[data-val="hbw"]').classList.add('active');
+  document.querySelector('.year-btn[data-val="base"]').classList.add('active');
+  document.querySelector('.tld-btn[data-val="hbw"]').classList.add('active');
+  document.querySelector('.tld-year-btn[data-val="base"]').classList.add('active');
+  document.querySelector('.as-year-btn[data-val="base"]').classList.add('active');
+  document.querySelector('.as-sc-btn[data-val="donothing"]').classList.add('active');
+});
+</script>
