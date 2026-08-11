@@ -1,3 +1,5 @@
+Here's the complete _pages/maps.md with justified paragraphs:
+
 ---
 layout: archive
 title: "Maps"
@@ -7,7 +9,9 @@ author_profile: true
 
 ## Trip Production and Attraction, Gazipur City Corporation
 
-These maps present zonal trip production and attraction patterns for Gazipur City Corporation, derived from the trip generation step of the four-step travel demand model developed under the Gazipur Comprehensive Transport Masterplan. Production denotes trips originating from each zone, while attraction represents trips drawn to it, together forming the foundational input for subsequent distribution, mode choice, and assignment modeling stages.
+<p style="text-align: justify;">
+These maps present zonal trip production and attraction patterns for Gazipur City Corporation, derived from the trip generation step of the four-step travel demand model developed under the Gazipur Comprehensive Transport Masterplan. Production denotes trips originating from each zone, while attraction represents trips drawn to it, together forming the foundational input for subsequent distribution, mode choice, and assignment modelling stages.
+</p>
 
 <div style="margin: 18px 0 10px;">
   <div style="font-size: 13px; font-weight: 600; margin-bottom: 6px;">Trip end</div>
@@ -32,7 +36,9 @@ These maps present zonal trip production and attraction patterns for Gazipur Cit
 
 ## Trip Desire Lines, Gazipur City Corporation
 
+<p style="text-align: justify;">
 Desire lines from the gravity model developed for the Gazipur Comprehensive Transport Masterplan, produced within a four-step travel demand framework. Each line shows the straight-line demand between two zones, indicating where trips want to go rather than the route they take. Width and colour are scaled to trip volume.
+</p>
 
 <div style="margin: 18px 0 10px;">
   <div style="font-size: 13px; font-weight: 600; margin-bottom: 6px;">Trip purpose</div>
@@ -55,7 +61,7 @@ Desire lines from the gravity model developed for the Gazipur Comprehensive Tran
 
 <p><em id="desireCaption">Home-based work desire lines, base year.</em></p>
 
-<p style="font-size: 13px; color: #777;">
+<p style="font-size: 13px; color: #777; text-align: justify;">
 Each map is classified on its own volume range, so line widths are not directly comparable across years. Legend values give the actual volumes.
 </p>
 
