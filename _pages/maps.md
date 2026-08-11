@@ -68,7 +68,7 @@ Each map is classified on its own volume range, so line widths are not directly 
 ## Trip Length Distribution, Gazipur City Corporation
 
 <p style="text-align: justify;">
-Spatial distribution of trip lengths by purpose and forecast year, produced from the distribution step of the four-step travel demand model. The pattern reflects how far trips travel from each zone, varying by purpose according to the deterrence function applied in the gravity model.
+Spatial distribution of trip lengths by purpose and forecast year, produced from the distribution step of the four-step travel demand model. Trips are expressed in number of trips, and travel time intervals in minutes. The pattern reflects how far trips travel from each zone, varying by purpose according to the deterrence function applied in the gravity model.
 </p>
 
 <div style="margin: 18px 0 10px;">
@@ -161,65 +161,4 @@ function paRefresh() {
   var path = '/images/pa-' + currentPA + '-' + currentPAYear + '.png';
   document.getElementById('paMap').src = path;
   document.getElementById('paLink').href = path;
-  document.getElementById('paCaption').innerText = paNames[currentPA] + ', ' + yearNames[currentPAYear] + '.';
-}
-
-function pickPA(btn) {
-  currentPA = btn.dataset.val;
-  setActive('pa-btn', btn);
-  paRefresh();
-}
-
-function pickPAYear(btn) {
-  currentPAYear = btn.dataset.val;
-  setActive('pa-year-btn', btn);
-  paRefresh();
-}
-
-function refresh() {
-  var path = '/images/desire-' + currentPurpose + '-' + currentYear + '.png';
-  document.getElementById('desireMap').src = path;
-  document.getElementById('desireLink').href = path;
-  document.getElementById('desireCaption').innerText = purposeNames[currentPurpose] + ' desire lines, ' + yearNames[currentYear] + '.';
-}
-
-function pickPurpose(btn) {
-  currentPurpose = btn.dataset.val;
-  setActive('purpose-btn', btn);
-  refresh();
-}
-
-function pickYear(btn) {
-  currentYear = btn.dataset.val;
-  setActive('year-btn', btn);
-  refresh();
-}
-
-function tldRefresh() {
-  var path = '/images/tld-' + currentTld + '-' + currentTldYear + '.png';
-  document.getElementById('tldMap').src = path;
-  document.getElementById('tldLink').href = path;
-  document.getElementById('tldCaption').innerText = purposeNames[currentTld] + ' trip length distribution, ' + yearNames[currentTldYear] + '.';
-}
-
-function pickTld(btn) {
-  currentTld = btn.dataset.val;
-  setActive('tld-btn', btn);
-  tldRefresh();
-}
-
-function pickTldYear(btn) {
-  currentTldYear = btn.dataset.val;
-  setActive('tld-year-btn', btn);
-  tldRefresh();
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelector('.pa-btn[data-val="prod"]').classList.add('active');
-  document.querySelector('.pa-year-btn[data-val="base"]').classList.add('active');
-  document.querySelector('.purpose-btn[data-val="hbw"]').classList.add('active');
-  document.querySelector('.year-btn[data-val="base"]').classList.add('active');
-  document.querySelector('.tld-btn[data-val="hbw"]').classList.add('active');
-  document.querySelector('.tld-year-btn[data-val="base"]').classList.add('active');
-});
-</script>
+  document.getElementById('paCaption').inn
