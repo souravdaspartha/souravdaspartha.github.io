@@ -1,3 +1,5 @@
+Setting a fixed box for both, with object-fit: contain so nothing distorts:
+
 ---
 layout: archive
 title: "Maps"
@@ -25,7 +27,7 @@ These maps present zonal trip production and attraction patterns for Gazipur Cit
 </div>
 
 <a id="paLink" href="/images/pa-prod-base.png" target="_blank" title="Click to open full size">
-<img id="paMap" src="/images/pa-prod-base.png" alt="Trip production and attraction" style="max-width: 550px; width: 100%; border: 1px solid rgba(128,128,128,0.3);">
+<img id="paMap" class="mapframe" src="/images/pa-prod-base.png" alt="Trip production and attraction">
 </a>
 
 <p><em id="paCaption">Trip production by zone, base year.</em></p>
@@ -54,7 +56,7 @@ Desire lines from the gravity model developed for the Gazipur Comprehensive Tran
 </div>
 
 <a id="desireLink" href="/images/desire-hbw-base.png" target="_blank" title="Click to open full size">
-<img id="desireMap" src="/images/desire-hbw-base.png" alt="Trip desire lines" style="max-width: 550px; width: 100%; border: 1px solid rgba(128,128,128,0.3);">
+<img id="desireMap" class="mapframe" src="/images/desire-hbw-base.png" alt="Trip desire lines">
 </a>
 
 <p><em id="desireCaption">Home-based work desire lines, base year.</em></p>
@@ -68,6 +70,16 @@ HBW: home-based work &nbsp;|&nbsp; HBE: home-based education &nbsp;|&nbsp; HBO: 
 </p>
 
 <style>
+.mapframe {
+  width: 100%;
+  max-width: 550px;
+  height: 550px;
+  object-fit: contain;
+  border: 1px solid rgba(128,128,128,0.3);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  border-radius: 4px;
+  background: #fff;
+}
 .purpose-btn, .year-btn, .pa-btn, .pa-year-btn {
   padding: 7px 16px;
   margin-right: 6px;
