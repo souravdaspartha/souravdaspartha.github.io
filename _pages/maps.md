@@ -7,7 +7,7 @@ author_profile: true
 
 ## Trip Production and Attraction, Gazipur City Corporation
 
-Zonal trip ends from the generation step of the four-step travel demand model developed for the Gazipur Comprehensive Transport Masterplan. Production represents the trips originating from each zone, attraction the trips drawn to it.
+These map presents zonal trip production and attraction patterns for Gazipur City Corporation, derived from the trip generation step of the four-step travel demand model developed under the Gazipur Comprehensive Transport Masterplan. Production denotes trips originating from each zone, while attraction represents trips drawn to it, together forming the foundational input for subsequent distribution, mode choice, and assignment modeling stages.
 
 <div style="margin: 18px 0 10px;">
   <div style="font-size: 13px; font-weight: 600; margin-bottom: 6px;">Trip end</div>
