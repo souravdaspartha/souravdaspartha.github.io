@@ -157,9 +157,8 @@ Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
 Conceptual intersection layouts prepared for locations across Dhaka South City Corporation. Each design responds to observed turning movements, pedestrian demand and capacity constraints at the site, developed in Civil 3D alongside traffic, delay and parking survey analysis.
 </p>
 
-<div style="display: flex; align-items: center; gap: 14px; margin: 18px 0;">
+<div style="display: flex; align-items: center; gap: 12px; margin: 18px 0;">
   <button class="nav-btn" onclick="stepIx(-1)" title="Previous">&#8592;</button>
-  <span id="ixLabel" style="font-size: 15px; font-weight: 600;">Tati Bazar</span>
   <span id="ixCount" style="font-size: 13px; color: #888;">1 / 7</span>
   <button class="nav-btn" onclick="stepIx(1)" title="Next">&#8594;</button>
 </div>
@@ -261,13 +260,13 @@ var scenarioNames = {
 };
 
 var ixList = [
-  { file: 'ix-tatibazar',        label: 'Tati Bazar',          caption: 'Tati Bazar' },
-  { file: 'ix-sayedabad-closed', label: 'Sayedabad (Closed)',  caption: 'Sayedabad (closed intersection)' },
-  { file: 'ix-sayedabad-open',   label: 'Sayedabad (Open)',    caption: 'Sayedabad (open intersection)' },
-  { file: 'ix-maniknagar',       label: 'Maniknagar',          caption: 'Maniknagar' },
-  { file: 'ix-atishdipankar',    label: 'Atish Dipankar',      caption: 'Atish Dipankar' },
-  { file: 'ix-khilgaon',         label: 'Khilgaon Railgate',   caption: 'Khilgaon Railgate' },
-  { file: 'ix-policefari',       label: 'Police Fari',         caption: 'Police Fari' }
+  { file: 'ix-tatibazar',        caption: 'Tati Bazar' },
+  { file: 'ix-sayedabad-closed', caption: 'Sayedabad (closed intersection)' },
+  { file: 'ix-sayedabad-open',   caption: 'Sayedabad (open intersection)' },
+  { file: 'ix-maniknagar',       caption: 'Maniknagar' },
+  { file: 'ix-atishdipankar',    caption: 'Atish Dipankar' },
+  { file: 'ix-khilgaon',         caption: 'Khilgaon Railgate' },
+  { file: 'ix-policefari',       caption: 'Police Fari' }
 ];
 var ixIndex = 0;
 
@@ -369,7 +368,6 @@ function stepIx(direction) {
   var path = '/images/' + item.file + '.png';
   document.getElementById('ixMap').src = path;
   document.getElementById('ixLink').href = path;
-  document.getElementById('ixLabel').innerText = item.label;
   document.getElementById('ixCount').innerText = (ixIndex + 1) + ' / ' + ixList.length;
   document.getElementById('ixCaption').innerText = item.caption + ' intersection, conceptual design.';
 }
