@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ab59faf9a8a9d9eafb68a121ae9bf0d0 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/iso8601-js-period@0.2.1/iso8601.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/pa7_hm.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/pa7_leaflet_hm.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.control.css"/>
+    
+            <script>
+            var TDHeatmap = L.TimeDimension.Layer.extend({
+                initialize: function(data, options) {
+                    var heatmapCfg = {
+                        radius: 15,
+                        blur: 0.8,
+                        maxOpacity: 1.,
+                        scaleRadius: false,
+                        useLocalExtrema: false,
+                        latField: 'lat',
+                        lngField: 'lng',
+                        valueField: 'count',
+                        defaultWeight : 1,
+                    };
+                    heatmapCfg = $.extend({}, heatmapCfg, options.heatmapOptions || {});
+                    var layer = new HeatmapOverlay(heatmapCfg);
+                    L.TimeDimension.Layer.prototype.initialize.call(this, layer, options);
+                    this._currentLoadedTime = 0;
+                    this._currentTimeData = {
+                        data: []
+                        };
+                    this.data= data;
+                    this.defaultWeight = heatmapCfg.defaultWeight || 1;
+                },
+                onAdd: function(map) {
+                    L.TimeDimension.Layer.prototype.onAdd.call(this, map);
+                    map.addLayer(this._baseLayer);
+                    if (this._timeDimension) {
+                        this._getDataForTime(this._timeDimension.getCurrentTime());
+                    }
+                },
+                _onNewTimeLoading: function(ev) {
+                    this._getDataForTime(ev.time);
+                    return;
+                },
+                isReady: function(time) {
+                    return (this._currentLoadedTime == time);
+                },
+                _update: function() {
+                    this._baseLayer.setData(this._currentTimeData);
+                    return true;
+                },
+                _getDataForTime: function(time) {
+                    delete this._currentTimeData.data;
+                    this._currentTimeData.data = [];
+                    var data = this.data[time-1];
+                    for (var i = 0; i < data.length; i++) {
+                        this._currentTimeData.data.push({
+                                lat: data[i][0],
+                                lng: data[i][1],
+                                count: data[i].length>2 ? data[i][2] : this.defaultWeight
+                            });
+                        }
+                    this._currentLoadedTime = time;
+                    if (this._timeDimension && time == this._timeDimension.getCurrentTime() && !this._timeDimension.isLoading()) {
+                        this._update();
+                    }
+                    this.fire('timeload', {
+                        time: time
+                    });
+                }
+            });
+
+            L.Control.TimeDimensionCustom = L.Control.TimeDimension.extend({
+                initialize: function(index, options) {
+                    var playerOptions = {
+                        buffer: 1,
+                        minBufferReady: -1
+                        };
+                    options.playerOptions = $.extend({}, playerOptions, options.playerOptions || {});
+                    L.Control.TimeDimension.prototype.initialize.call(this, options);
+                    this.index = index;
+                },
+                _getDisplayDateFormat: function(date) {
+                    return this.index[date.getTime()-1];
+                }
+            });
+            </script>
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 30px; left: 20px; z-index: 9999;
+            background: rgba(255,255,255,.95); padding: 12px 15px;
+            border: 1px solid #ccc; border-radius: 5px;
+            font-family: Arial, sans-serif; font-size: 12px; color: #333;
+            box-shadow: 0 2px 6px rgba(0,0,0,.2);">
+  <div style="font-weight: bold; margin-bottom: 6px;">Crash density</div>
+  <div style="width: 155px; height: 12px; border-radius: 2px;
+       background: linear-gradient(to right, #2eb82e,#99e600,#ffd400,#ff9900,#ff5500,#ff0000);"></div>
+  <div style="display: flex; justify-content: space-between; width: 155px;
+              margin-top: 3px; color: #666;">
+    <span>Low</span><span>High</span>
+  </div>
+
+  <div style="font-weight: bold; margin: 11px 0 2px;">Accident severity</div>
+  <div style="display:flex;align-items:center;margin-top:4px;"><span style="width:11px;height:11px;border-radius:50%;background:#ff0000;border:1px solid #fff;box-shadow:0 0 0 1px #bbb;margin-right:7px;"></span>Fatal</div><div style="display:flex;align-items:center;margin-top:4px;"><span style="width:11px;height:11px;border-radius:50%;background:#ff8c00;border:1px solid #fff;box-shadow:0 0 0 1px #bbb;margin-right:7px;"></span>Severe Injury</div><div style="display:flex;align-items:center;margin-top:4px;"><span style="width:11px;height:11px;border-radius:50%;background:#ffd400;border:1px solid #fff;box-shadow:0 0 0 1px #bbb;margin-right:7px;"></span>Minor Injury</div><div style="display:flex;align-items:center;margin-top:4px;"><span style="width:11px;height:11px;border-radius:50%;background:#2eb82e;border:1px solid #fff;box-shadow:0 0 0 1px #bbb;margin-right:7px;"></span>Collision</div>
+
+  <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid #e3e3e3;
+              color: #666; line-height: 1.45;">
+    Density weighted by severity<br>
+    Dashed circle = top accident location<br>One frame = one year
+  </div>
+</div>
+    
+            <div class="folium-map" id="map_ab59faf9a8a9d9eafb68a121ae9bf0d0" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ab59faf9a8a9d9eafb68a121ae9bf0d0 = L.map(
+                "map_ab59faf9a8a9d9eafb68a121ae9bf0d0",
+                {
+                    center: [23.9842461136747, 90.37563849575301],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_ab59faf9a8a9d9eafb68a121ae9bf0d0);
+
+            
+
+        
+    
+            var tile_layer_905728f352628928b6b60ef7747ee6fd = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_905728f352628928b6b60ef7747ee6fd.addTo(map_ab59faf9a8a9d9eafb68a121ae9bf0d0);
+        
+    
+
+            var times = [1, 2, 3, 4, 5, 6];
+
+            map_ab59faf9a8a9d9eafb68a121ae9bf0d0.timeDimension = L.timeDimension(
+                {times : times, currentTime: new Date(1)}
+            );
+
+            var heat_map_1884e2ff93b8c99b5618684291c87c29Control = new L.Control.TimeDimensionCustom(['2019', '2020', '2021', '2022', '2023', '2024'], {
+                autoPlay: true,
+                backwardButton: true,
+                displayDate: true,
+                forwardButton: true,
+                limitMinimumRange: 5,
+                limitSliders: true,
+                loopButton: true,
+                maxSpeed: 10,
+                minSpeed: 0.1,
+                playButton: true,
+                playReverseButton: true,
+                position: "bottomleft",
+                speedSlider: true,
+                speedStep: 0.6,
+                styleNS: "leaflet-control-timecontrol",
+                timeSlider: true,
+                timeSliderDragUpdate: false,
+                timeSteps: 1
+                })
+                .addTo(map_ab59faf9a8a9d9eafb68a121ae9bf0d0);
+
+                var heat_map_1884e2ff93b8c99b5618684291c87c29 = new TDHeatmap([[[23.90867762, 90.41899314, 1.0], [23.91514274, 90.42512501, 1.0]], [[23.92949757, 90.45333997, 1.0], [23.9318169, 90.45982998, 1.0], [23.91910416, 90.46813751, 1.0], [24.01064046, 90.3226759, 0.6], [24.01144073, 90.31877338, 1.0], [24.0039335, 90.34010272, 1.0], [24.01009514, 90.33150531, 0.6], [24.0031295, 90.32143746, 1.0], [23.91545662, 90.39487747, 1.0], [23.91041369, 90.42037125, 0.6], [23.91291801, 90.42214774, 1.0], [23.90850262, 90.4214348, 1.0], [23.91802658, 90.40106068, 0.6], [23.89326338, 90.40182575, 1.0], [23.91739013, 90.39413477, 1.0], [23.90468386, 90.4073347, 1.0], [23.90230429, 90.41274483, 1.0], [23.9065324, 90.39885578, 1.0], [23.91041369, 90.42037125, 1.0], [23.91286071, 90.38763785, 1.0], [23.90422926, 90.41475663, 1.0], [23.90933487, 90.39760103, 1.0], [23.90875294, 90.4191162, 1.0], [23.89418809, 90.40076066, 1.0], [23.90833907, 90.39806595, 1.0], [23.93981034, 90.38465081, 1.0], [23.95255591, 90.38133602, 1.0], [23.93497678, 90.38671016, 1.0], [23.94036092, 90.3844176, 1.0], [23.96293441, 90.39164118, 1.0], [23.92949889, 90.38894537, 1.0], [23.97746774, 90.37386263, 1.0], [23.97742664, 90.38047684, 1.0], [23.97742664, 90.38047684, 1.0], [23.97905225, 90.37064406, 1.0], [23.97906698, 90.38065795, 1.0], [23.97749181, 90.37867221, 1.0], [23.95318865, 90.34786815, 1.0], [23.9957899, 90.39655575, 1.0], [23.99672101, 90.34742118, 1.0], [23.99564908, 90.34842496, 1.0], [23.98841796, 90.35957298, 1.0], [23.98915997, 90.35994505, 0.6], [23.99041937, 90.38708513, 1.0], [23.97126198, 90.42854676, 1.0], [23.99794979, 90.38248255, 1.0], [24.06919464, 90.39154709, 1.0], [24.05857694, 90.38769658, 1.0], [24.01031064, 90.38414214, 1.0], [24.01830126, 90.38467111, 1.0]], [[23.93106171, 90.45733041, 1.0], [23.93100436, 90.45703762, 1.0], [24.02189561, 90.3218022, 1.0], [24.00386986, 90.34011233, 1.0], [24.00787045, 90.33526355, 1.0], [24.00939845, 90.33028443, 1.0], [24.0247176, 90.3126797, 1.0], [24.01086052, 90.3218176, 1.0], [24.02137518, 90.32414956, 1.0], [24.02137518, 90.32414956, 1.0], [23.9990841, 90.32057823, 1.0], [24.00938895, 90.33098467, 1.0], [23.89392573, 90.40367933, 1.0], [23.89805546, 90.39893581, 1.0], [23.90333278, 90.42225002, 0.6], [23.89907457, 90.40931539, 1.0], [23.91159747, 90.39749747, 1.0], [23.94436404, 90.38287895, 0.6], [23.90819343, 90.39814548, 1.0], [23.90987417, 90.39735245, 1.0], [23.90689421, 90.39854969, 0.6], [23.947359, 90.38191721, 1.0], [23.9372438, 90.38575213, 1.0], [23.94500864, 90.38282002, 1.0], [23.96646012, 90.38021809, 1.0], [23.94313288, 90.38351949, 1.0], [23.95716102, 90.3809127, 1.0], [23.92894566, 90.38932183, 1.0], [23.93338435, 90.39306606, 0.2], [23.92958527, 90.38905307, 0.2], [23.96683213, 90.38006295, 0.2], [23.94487554, 90.38268137, 1.0], [23.9282758, 90.38960983, 0.2], [23.93169805, 90.38821877, 1.0], [23.95086945, 90.38118061, 1.0], [23.94477313, 90.38273359, 1.0], [23.99187023, 90.39269819, 0.6], [23.98917327, 90.35994802, 1.0], [23.99997972, 90.4202754, 1.0], [23.99458282, 90.34966965, 1.0], [23.99620943, 90.38242615, 1.0], [24.00565557, 90.38327308, 1.0], [23.98609158, 90.37159401, 1.0], [23.98908822, 90.3608123, 1.0], [23.98765214, 90.38152847, 1.0], [23.99205226, 90.35708414, 1.0], [23.97749915, 90.38265022, 1.0], [24.00852465, 90.38344448, 1.0], [24.04921734, 90.38879929, 1.0], [24.08907891, 90.36739307, 1.0], [24.01895246, 90.38470746, 1.0], [24.03770375, 90.38839727, 1.0], [24.08244715, 90.37484823, 1.0], [24.06127556, 90.38793201, 1.0], [24.01729908, 90.38455728, 0.6], [24.09014911, 90.40076082, 1.0], [24.03777329, 90.38843726, 0.6], [24.03303773, 90.38773857, 1.0]], [[23.93604411, 90.47841246, 1.0], [23.92262408, 90.4351778, 1.0], [24.01053497, 90.3240749, 1.0], [23.996623, 90.34745336, 1.0], [24.01150388, 90.31612505, 1.0], [24.01182783, 90.31584864, 1.0], [23.89367487, 90.40345307, 0.6], [23.91041369, 90.42037125, 1.0], [23.91557793, 90.40723171, 1.0], [23.90600163, 90.38004599, 1.0], [23.90894835, 90.39780196, 0.6], [23.89992409, 90.39882215, 0.2], [23.9179303, 90.39372286, 0.2], [23.91686135, 90.3942244, 1.0], [23.91013286, 90.39722841, 0.6], [23.95249664, 90.31504127, 1.0], [23.96406243, 90.26874136, 1.0], [23.97905222, 90.26237535, 1.0], [23.94625323, 90.38213618, 1.0], [23.94481151, 90.38271236, 0.2], [23.96057649, 90.37514451, 1.0], [23.96817915, 90.39801805, 1.0], [23.98918506, 90.36551426, 1.0], [23.98839683, 90.35962504, 1.0], [23.99146545, 90.39434883, 0.2], [23.96969763, 90.38030401, 1.0], [23.9959544, 90.38243552, 1.0], [23.98541529, 90.3813961, 1.0], [23.98952553, 90.38201793, 1.0], [23.98783844, 90.39380661, 1.0], [23.98384879, 90.38122676, 1.0], [23.96848507, 90.38023913, 1.0], [23.99551364, 90.39807504, 1.0], [23.97753316, 90.38053032, 1.0], [23.96963591, 90.3802722, 1.0], [23.94797836, 90.42473569, 0.6], [23.99115656, 90.42013039, 0.6], [24.04944309, 90.38931012, 0.6], [24.09844358, 90.40869278, 1.0], [24.0110367, 90.38388822, 1.0], [24.03470904, 90.38796197, 1.0], [23.99285125, 90.40411716, 0.6], [24.04222235, 90.38887951, 1.0], [24.09540665, 90.40161131, 1.0], [24.04565402, 90.38933526, 1.0], [24.02248856, 90.37162464, 0.6], [24.04565402, 90.38933526, 1.0], [24.3914022, 90.3294337, 1.0], [24.05854778, 90.38797, 1.0], [24.06008048, 90.38790234, 1.0], [23.99201902, 90.39816093, 1.0], [23.99360883, 90.40727533, 1.0], [24.03280715, 90.38767823, 1.0], [23.99201902, 90.39816093, 1.0]], [[23.93411597, 90.46638339, 1.0], [23.91745126, 90.45967103, 1.0], [24.0111638, 90.32203736, 1.0], [24.00803019, 90.33498744, 1.0], [24.00521354, 90.31650359, 1.0], [24.01003578, 90.32754713, 1.0], [24.01062698, 90.32344209, 1.0], [24.0109517, 90.30862995, 1.0], [24.01294175, 90.31056932, 1.0], [24.00487736, 90.33135567, 1.0], [24.0083552, 90.33382429, 1.0], [24.00851053, 90.33317251, 1.0], [24.00295921, 90.326378, 1.0], [24.03148978, 90.32213587, 1.0], [24.01227101, 90.31158465, 1.0], [24.00605269, 90.30809832, 1.0], [24.01083881, 90.32276062, 1.0], [23.90526239, 90.40007902, 1.0], [23.92420152, 90.39126685, 0.6], [23.92301453, 90.40071508, 1.0], [23.93955602, 90.3847955, 1.0], [23.91037927, 90.39726507, 1.0], [23.89737979, 90.39315237, 0.6], [23.94424823, 90.38290551, 1.0], [24.03681354, 90.24084117, 1.0], [23.97838947, 90.304028, 1.0], [23.98342018, 90.28854837, 0.2], [23.98652279, 90.32113496, 1.0], [23.9864218, 90.31796639, 1.0], [23.97907977, 90.26237603, 1.0], [23.98306889, 90.26077921, 1.0], [23.98950947, 90.25772264, 1.0], [23.99379424, 90.2556746, 1.0], [23.96771887, 90.29128878, 1.0], [23.9788777, 90.26250205, 1.0], [23.9939173, 90.25554637, 1.0], [23.97722287, 90.26322729, 0.2], [23.99330573, 90.32175002, 0.6], [23.96688457, 90.26761327, 1.0], [23.99138664, 90.25685221, 1.0], [23.93564764, 90.38749069, 1.0], [23.9542566, 90.38980889, 1.0], [23.96314233, 90.38031656, 1.0], [23.96641288, 90.38007216, 1.0], [23.93502051, 90.38666318, 1.0], [23.93890404, 90.38495775, 1.0], [23.96167551, 90.38066368, 1.0], [23.93570105, 90.3864805, 1.0], [23.93395382, 90.38720686, 1.0], [23.93782736, 90.38570492, 1.0], [23.98932776, 90.36671018, 1.0], [23.97739199, 90.37994293, 1.0], [23.98115406, 90.38111465, 1.0], [23.99052831, 90.38760363, 1.0], [23.99536674, 90.34872208, 1.0], [23.98931016, 90.35970517, 1.0], [23.99536674, 90.34872208, 1.0], [24.07156285, 90.3638876, 1.0], [23.95775201, 90.40091783, 1.0], [23.97742337, 90.37415711, 1.0], [23.97750882, 90.37800802, 1.0], [23.98880282, 90.35969097, 1.0], [23.97743801, 90.38049334, 0.6], [23.99729883, 90.3857714, 1.0], [23.98880282, 90.35969097, 1.0], [23.9929611, 90.42816287, 1.0], [24.07050469, 90.39122598, 1.0], [24.04565402, 90.38933526, 1.0], [24.07046467, 90.3912386, 1.0], [24.08934679, 90.37817054, 1.0], [24.08487538, 90.37990453, 1.0], [23.99232724, 90.40003357, 0.6], [24.03544625, 90.38793014, 1.0], [24.01012273, 90.42290639, 1.0], [24.22610886, 90.40964169, 1.0], [23.96255502, 90.40744102, 1.0], [24.00831435, 90.42240201, 1.0], [24.22610886, 90.40964169, 1.0], [24.09724453, 90.40197536, 1.0], [24.03016216, 90.38663425, 1.0], [23.95946809, 90.41548981, 1.0], [24.05265604, 90.40763743, 1.0], [23.99204248, 90.3524036, 1.0], [24.00784955, 90.40788879, 1.0], [24.0255675, 90.42758603, 1.0], [23.97794726, 90.41433642, 1.0], [24.05083619, 90.38844904, 1.0], [24.06167596, 90.38818593, 1.0], [24.02898786, 90.38622897, 0.6], [23.9922992, 90.40026235, 0.6], [24.07046472, 90.39119546, 1.0], [24.06531469, 90.38930984, 1.0], [23.99997073, 90.42741442, 1.0], [24.04565402, 90.38933526, 1.0], [24.06531469, 90.38930984, 1.0], [24.0110779, 90.38378384, 1.0], [23.97655295, 90.41105629, 1.0], [23.94885257, 90.41987187, 1.0], [24.09591912, 90.40174338, 1.0], [24.02864198, 90.42847789, 1.0], [24.08476165, 90.3995155, 1.0], [24.04192441, 90.41860734, 1.0]], [[23.91380698, 90.42243726, 1.0], [23.93127312, 90.45106605, 1.0], [24.01352021, 90.30965934, 1.0], [24.00872362, 90.33288465, 1.0], [24.01741619, 90.32134005, 1.0], [24.0039825, 90.34004908, 1.0], [24.01054461, 90.3231855, 1.0], [23.88473758, 90.40042591, 1.0], [23.89837859, 90.40361594, 1.0], [23.91845455, 90.41077538, 1.0], [23.90337546, 90.39927488, 1.0], [23.92115243, 90.39253583, 1.0], [23.91463018, 90.39535922, 0.6], [23.91294018, 90.42216829, 1.0], [23.8958026, 90.39974329, 1.0], [23.9438241, 90.383239, 1.0], [23.94276673, 90.38345689, 1.0], [23.9438241, 90.383239, 1.0], [23.91369622, 90.39564652, 0.6], [23.93639587, 90.38630394, 1.0], [23.90992386, 90.39745692, 1.0], [23.96456974, 90.29677329, 0.6], [23.99267329, 90.32157708, 1.0], [23.9866355, 90.25895122, 1.0], [23.99360259, 90.27753816, 1.0], [23.993534, 90.25077536, 1.0], [23.99285131, 90.30980746, 1.0], [23.96955603, 90.2946347, 0.6], [23.95647538, 90.31126648, 1.0], [23.96239968, 90.38050634, 1.0], [23.96304063, 90.38042895, 1.0], [23.93570321, 90.38657923, 1.0], [23.96419255, 90.38052917, 1.0], [23.9417142, 90.38393467, 0.2], [23.95502619, 90.38125922, 1.0], [23.98208874, 90.36768691, 1.0], [23.98898411, 90.36196078, 1.0], [24.0188184, 90.38457588, 1.0], [23.99033539, 90.38186123, 1.0], [23.99064043, 90.3880883, 1.0], [23.99639709, 90.38547099, 1.0], [23.98970276, 90.3811599, 1.0], [23.99157731, 90.39539369, 1.0], [24.00225121, 90.38308948, 1.0], [23.98125079, 90.38003951, 0.6], [23.99245544, 90.3521791, 1.0], [23.99997039, 90.42026173, 0.6], [24.00356695, 90.38318717, 1.0], [23.98983725, 90.37822574, 0.6], [23.97740257, 90.37397024, 1.0], [23.96962792, 90.38011214, 0.6], [24.02946526, 90.38640978, 0.2], [24.02509229, 90.38517518, 1.0], [23.95115493, 90.40855545, 1.0], [23.9924613, 90.40086159, 1.0], [24.06582766, 90.38949083, 0.6], [23.99232724, 90.40003357, 1.0], [24.06879286, 90.3905737, 1.0], [24.02898786, 90.38622897, 1.0], [24.08987198, 90.40068247, 1.0], [24.0782726, 90.39507719, 1.0], [24.0940991, 90.40136772, 1.0], [24.0953844, 90.39063369, 1.0], [23.99405471, 90.40875707, 1.0], [24.03632401, 90.3880388, 1.0], [24.09541884, 90.40159421, 1.0]]],
+                {heatmapOptions: {
+                        radius: 28,
+                        blur: 0.8,
+                        minOpacity: 0.4,
+                        maxOpacity: 0.9,
+                        scaleRadius: false,
+                        useLocalExtrema: false,
+                        defaultWeight: 1,
+                        gradient: {'0.05': '#2eb82e', '0.25': '#99e600', '0.45': '#ffd400', '0.65': '#ff9900', '0.85': '#ff5500', '1.0': '#ff0000'}
+                    }
+                });
+
+        
+    
+            heat_map_1884e2ff93b8c99b5618684291c87c29.addTo(map_ab59faf9a8a9d9eafb68a121ae9bf0d0);
+        
+    
+            var feature_group_951048873d34efbe9576b73619150766 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_525e17cf8e3d0b909c3a1359028cdf2e = L.circle(
+                [23.938822, 90.385257],
+                {"bubblingMouseEvents": true, "color": "#1a1a1a", "dashArray": "6,6", "dashOffset": null, "fill": true, "fillColor": "#1a1a1a", "fillOpacity": 0.06, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 400, "stroke": true, "weight": 2}
+            ).addTo(feature_group_951048873d34efbe9576b73619150766);
+        
+    
+        var popup_5caf812b4cd985fb84668e11bf943936 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_90f0788906f7fed4c99cbc9c17cd2b24 = $(`<div id="html_90f0788906f7fed4c99cbc9c17cd2b24" style="width: 100.0%; height: 100.0%;"><b>Location #1</b><br>Board Bazar Area<br>Crashes: 33<br>Fatal: 27</div>`)[0];
+                popup_5caf812b4cd985fb84668e11bf943936.setContent(html_90f0788906f7fed4c99cbc9c17cd2b24);
+            
+        
+
+        circle_525e17cf8e3d0b909c3a1359028cdf2e.bindPopup(popup_5caf812b4cd985fb84668e11bf943936)
+        ;
+
+        
+    
+    
+            circle_525e17cf8e3d0b909c3a1359028cdf2e.bindTooltip(
+                `<div>
+                     #1 Board Bazar Area - 33 crashes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_8d923f3267890417fcb978f0ae66f48a = L.marker(
+                [23.938822, 90.385257],
+                {
+}
+            ).addTo(feature_group_951048873d34efbe9576b73619150766);
+        
+    
+            var div_icon_7ca44ba868bd99c9e095086df095bb0f = L.divIcon({
+  "html": "\u003cdiv style=\"font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; color: #1a1a1a; text-align: left; line-height: 1.3; white-space: nowrap; text-shadow: -1px -1px 2px #fff, 1px -1px 2px #fff, -1px 1px 2px #fff, 1px 1px 2px #fff;\"\u003e#1 Board Bazar Area\u003cbr\u003e\u003cspan style=\"font-weight: normal; font-size: 11px; color: #555;\"\u003e33 crashes\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [200, 34],
+  "iconAnchor": [-18, 17],
+  "className": "empty",
+});
+        
+    
+                marker_8d923f3267890417fcb978f0ae66f48a.setIcon(div_icon_7ca44ba868bd99c9e095086df095bb0f);
+            
+    
+            var circle_113b9ca1c4ed5659f83a733f9c1faac4 = L.circle(
+                [23.981345, 90.37873],
+                {"bubblingMouseEvents": true, "color": "#1a1a1a", "dashArray": "6,6", "dashOffset": null, "fill": true, "fillColor": "#1a1a1a", "fillOpacity": 0.06, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 400, "stroke": true, "weight": 2}
+            ).addTo(feature_group_951048873d34efbe9576b73619150766);
+        
+    
+        var popup_07b6a7b6a3f7b7ae7856692d51772683 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3b2bc46d8f06d97d624a25b58c67c77d = $(`<div id="html_3b2bc46d8f06d97d624a25b58c67c77d" style="width: 100.0%; height: 100.0%;"><b>Location #2</b><br>Vogra Area<br>Crashes: 23<br>Fatal: 20</div>`)[0];
+                popup_07b6a7b6a3f7b7ae7856692d51772683.setContent(html_3b2bc46d8f06d97d624a25b58c67c77d);
+            
+        
+
+        circle_113b9ca1c4ed5659f83a733f9c1faac4.bindPopup(popup_07b6a7b6a3f7b7ae7856692d51772683)
+        ;
+
+        
+    
+    
+            circle_113b9ca1c4ed5659f83a733f9c1faac4.bindTooltip(
+                `<div>
+                     #2 Vogra Area - 23 crashes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4737f923e2f2e17bb4a98dee6b063c40 = L.marker(
+                [23.981345, 90.37873],
+                {
+}
+            ).addTo(feature_group_951048873d34efbe9576b73619150766);
+        
+    
+            var div_icon_933732374cab3a3e3b7a6b83fc8647eb = L.divIcon({
+  "html": "\u003cdiv style=\"font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; color: #1a1a1a; text-align: left; line-height: 1.3; white-space: nowrap; text-shadow: -1px -1px 2px #fff, 1px -1px 2px #fff, -1px 1px 2px #fff, 1px 1px 2px #fff;\"\u003e#2 Vogra Area\u003cbr\u003e\u003cspan style=\"font-weight: normal; font-size: 11px; color: #555;\"\u003e23 crashes\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [200, 34],
+  "iconAnchor": [-18, 17],
+  "className": "empty",
+});
+        
+    
+                marker_4737f923e2f2e17bb4a98dee6b063c40.setIcon(div_icon_933732374cab3a3e3b7a6b83fc8647eb);
+            
+    
+            var circle_51d9b41ba5dd7304e9215c5fe84c842c = L.circle(
+                [23.910754, 90.396881],
+                {"bubblingMouseEvents": true, "color": "#1a1a1a", "dashArray": "6,6", "dashOffset": null, "fill": true, "fillColor": "#1a1a1a", "fillOpacity": 0.06, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 400, "stroke": true, "weight": 2}
+            ).addTo(feature_group_951048873d34efbe9576b73619150766);
+        
+    
+        var popup_06d09cdf7bdb467bed058d44c9250faf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_61054d3e0f413f1de586052453bff87a = $(`<div id="html_61054d3e0f413f1de586052453bff87a" style="width: 100.0%; height: 100.0%;"><b>Location #3</b><br>Tongi Area<br>Crashes: 21<br>Fatal: 14</div>`)[0];
+                popup_06d09cdf7bdb467bed058d44c9250faf.setContent(html_61054d3e0f413f1de586052453bff87a);
+            
+        
+
+        circle_51d9b41ba5dd7304e9215c5fe84c842c.bindPopup(popup_06d09cdf7bdb467bed058d44c9250faf)
+        ;
+
+        
+    
+    
+            circle_51d9b41ba5dd7304e9215c5fe84c842c.bindTooltip(
+                `<div>
+                     #3 Tongi Area - 21 crashes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_cf3db0ca97feb3dfd5766312df1f8e09 = L.marker(
+                [23.910754, 90.396881],
+                {
+}
+            ).addTo(feature_group_951048873d34efbe9576b73619150766);
+        
+    
+            var div_icon_f3d2c7074bcea795337a166c2efd9341 = L.divIcon({
+  "html": "\u003cdiv style=\"font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; color: #1a1a1a; text-align: left; line-height: 1.3; white-space: nowrap; text-shadow: -1px -1px 2px #fff, 1px -1px 2px #fff, -1px 1px 2px #fff, 1px 1px 2px #fff;\"\u003e#3 Tongi Area\u003cbr\u003e\u003cspan style=\"font-weight: normal; font-size: 11px; color: #555;\"\u003e21 crashes\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [200, 34],
+  "iconAnchor": [-18, 17],
+  "className": "empty",
+});
+        
+    
+                marker_cf3db0ca97feb3dfd5766312df1f8e09.setIcon(div_icon_f3d2c7074bcea795337a166c2efd9341);
+            
+    
+            var circle_5c31ddcbfc9d483467c22e6241d0d468 = L.circle(
+                [24.038242, 90.387982],
+                {"bubblingMouseEvents": true, "color": "#1a1a1a", "dashArray": "6,6", "dashOffset": null, "fill": true, "fillColor": "#1a1a1a", "fillOpacity": 0.06, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 400, "stroke": true, "weight": 2}
+            ).addTo(feature_group_951048873d34efbe9576b73619150766);
+        
+    
+        var popup_a0a798312084b60c5f8ee7085cdf93a9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e347c59ffe45c4f3285e3c0ae9c2e6d6 = $(`<div id="html_e347c59ffe45c4f3285e3c0ae9c2e6d6" style="width: 100.0%; height: 100.0%;"><b>Location #4</b><br>Salna Area<br>Crashes: 20<br>Fatal: 16</div>`)[0];
+                popup_a0a798312084b60c5f8ee7085cdf93a9.setContent(html_e347c59ffe45c4f3285e3c0ae9c2e6d6);
+            
+        
+
+        circle_5c31ddcbfc9d483467c22e6241d0d468.bindPopup(popup_a0a798312084b60c5f8ee7085cdf93a9)
+        ;
+
+        
+    
+    
+            circle_5c31ddcbfc9d483467c22e6241d0d468.bindTooltip(
+                `<div>
+                     #4 Salna Area - 20 crashes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_67e620dcc6a1c8b1c5c7fb15517f8f7b = L.marker(
+                [24.038242, 90.387982],
+                {
+}
+            ).addTo(feature_group_951048873d34efbe9576b73619150766);
+        
+    
+            var div_icon_541a582251d6707f9a31340ae3d28b55 = L.divIcon({
+  "html": "\u003cdiv style=\"font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; color: #1a1a1a; text-align: left; line-height: 1.3; white-space: nowrap; text-shadow: -1px -1px 2px #fff, 1px -1px 2px #fff, -1px 1px 2px #fff, 1px 1px 2px #fff;\"\u003e#4 Salna Area\u003cbr\u003e\u003cspan style=\"font-weight: normal; font-size: 11px; color: #555;\"\u003e20 crashes\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [200, 34],
+  "iconAnchor": [-18, 17],
+  "className": "empty",
+});
+        
+    
+                marker_67e620dcc6a1c8b1c5c7fb15517f8f7b.setIcon(div_icon_541a582251d6707f9a31340ae3d28b55);
+            
+    
+            var circle_b3f53621676349f85076e3e029e9879d = L.circle(
+                [24.009763, 90.326628],
+                {"bubblingMouseEvents": true, "color": "#1a1a1a", "dashArray": "6,6", "dashOffset": null, "fill": true, "fillColor": "#1a1a1a", "fillOpacity": 0.06, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 400, "stroke": true, "weight": 2}
+            ).addTo(feature_group_951048873d34efbe9576b73619150766);
+        
+    
+        var popup_448d5fafee55400c85c7c1f3d847949f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1753500a725ec6905e713eb8fa28329e = $(`<div id="html_1753500a725ec6905e713eb8fa28329e" style="width: 100.0%; height: 100.0%;"><b>Location #5</b><br>Konabari Area<br>Crashes: 20<br>Fatal: 18</div>`)[0];
+                popup_448d5fafee55400c85c7c1f3d847949f.setContent(html_1753500a725ec6905e713eb8fa28329e);
+            
+        
+
+        circle_b3f53621676349f85076e3e029e9879d.bindPopup(popup_448d5fafee55400c85c7c1f3d847949f)
+        ;
+
+        
+    
+    
+            circle_b3f53621676349f85076e3e029e9879d.bindTooltip(
+                `<div>
+                     #5 Konabari Area - 20 crashes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a08827db52725e6759402c5bee1e2c69 = L.marker(
+                [24.009763, 90.326628],
+                {
+}
+            ).addTo(feature_group_951048873d34efbe9576b73619150766);
+        
+    
+            var div_icon_3b6a882435f617119e01332705da4405 = L.divIcon({
+  "html": "\u003cdiv style=\"font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; color: #1a1a1a; text-align: left; line-height: 1.3; white-space: nowrap; text-shadow: -1px -1px 2px #fff, 1px -1px 2px #fff, -1px 1px 2px #fff, 1px 1px 2px #fff;\"\u003e#5 Konabari Area\u003cbr\u003e\u003cspan style=\"font-weight: normal; font-size: 11px; color: #555;\"\u003e20 crashes\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [200, 34],
+  "iconAnchor": [-18, 17],
+  "className": "empty",
+});
+        
+    
+                marker_a08827db52725e6759402c5bee1e2c69.setIcon(div_icon_3b6a882435f617119e01332705da4405);
+            
+    
+            feature_group_951048873d34efbe9576b73619150766.addTo(map_ab59faf9a8a9d9eafb68a121ae9bf0d0);
+        
+    
+            var layer_control_7c1ba309c63af44cd62a73e6dc81bd76_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_905728f352628928b6b60ef7747ee6fd,
+                },
+                overlays :  {
+                    "Crash Density" : heat_map_1884e2ff93b8c99b5618684291c87c29,
+                    "Top 5 accident locations" : feature_group_951048873d34efbe9576b73619150766,
+                },
+            };
+            let layer_control_7c1ba309c63af44cd62a73e6dc81bd76 = L.control.layers(
+                layer_control_7c1ba309c63af44cd62a73e6dc81bd76_layers.base_layers,
+                layer_control_7c1ba309c63af44cd62a73e6dc81bd76_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_ab59faf9a8a9d9eafb68a121ae9bf0d0);
+
+        
+</script>
+</html>
