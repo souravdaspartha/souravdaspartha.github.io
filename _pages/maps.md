@@ -127,6 +127,7 @@ Assigned link volumes from the traffic assignment step of the four-step travel d
 </a>
 
 <p><em id="asCaption">Assigned link volumes, base year.</em></p>
+
 ---
 
 ## Road Crash Density, Gazipur
@@ -166,20 +167,17 @@ Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
   border-radius: 4px;
   background: #fff;
 }
-
 .mapembed {
   width: 100%;
-  max-width: 550px;
-  height: 760px;
+  height: 620px;
   border: 1px solid rgba(0,0,0,0.25);
   box-shadow: 0 8px 24px rgba(0,0,0,0.35);
   border-radius: 4px;
   background: #fff;
 }
 @media (max-width: 700px) {
-  .mapembed { height: 560px; }
+  .mapembed { height: 460px; }
 }
-  
 .purpose-btn, .year-btn, .pa-btn, .pa-year-btn,
 .tld-btn, .tld-year-btn, .as-year-btn, .as-sc-btn {
   padding: 7px 16px;
