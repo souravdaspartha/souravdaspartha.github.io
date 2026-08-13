@@ -130,7 +130,7 @@ Assigned link volumes from the traffic assignment step of the four-step travel d
 
 ---
 
-## Road Crash Density, Gazipur
+## Road Crash Density, Gazipur City Corporaton
 
 <p style="text-align: justify;">
 Animated mapping of 332 road crashes across Gazipur City Corporation Area, playing year by year. The density surface is weighted by severity, with fatal crashes carrying five times the influence of a damage-only collision. The colour scale is held fixed across all years, so intensity is comparable between frames rather than rescaled within each one. Dashed circles mark the five highest-concentration locations identified by Density-Based Spatial Clustering of Applications with Noise (DBSCAN) at a 500 m threshold: Board Bazar, Vogra, Tongi, Salna and Konabari. These clusters are derived from the full study period, not individual years, so their positions and crash counts remain constant as the animation plays.
