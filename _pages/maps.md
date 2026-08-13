@@ -130,7 +130,7 @@ Assigned link volumes from the traffic assignment step of the four-step travel d
 
 ---
 
-## Road Crash Density, Gazipur City Corporaton
+## Road Crash Density, Gazipur City Corporation
 
 <p style="text-align: justify;">
 Animated mapping of 332 road crashes across Gazipur City Corporation Area, playing year by year. The density surface is weighted by severity, with fatal crashes carrying five times the influence of a damage-only collision. The colour scale is held fixed across all years, so intensity is comparable between frames rather than rescaled within each one. Dashed circles mark the five highest-concentration locations identified by Density-Based Spatial Clustering of Applications with Noise (DBSCAN) at a 500 m threshold: Board Bazar, Vogra, Tongi, Salna and Konabari. These clusters are derived from the full study period, not individual years, so their positions and crash counts remain constant as the animation plays.
@@ -148,6 +148,31 @@ Animated mapping of 332 road crashes across Gazipur City Corporation Area, playi
 Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
 <a href="/assets/maps/crash-hotspot/accident_hotspot_animated.html" target="_blank">Open full size</a>
 </p>
+
+---
+
+## Intersection Design, Dhaka South City Corporation
+
+<p style="text-align: justify;">
+Conceptual intersection layouts prepared for locations across Dhaka South City Corporation. Each design responds to observed turning movements, pedestrian demand and capacity constraints at the site, developed in Civil 3D alongside traffic, delay and parking survey analysis.
+</p>
+
+<div style="margin: 18px 0 18px;">
+  <div style="font-size: 13px; font-weight: 600; margin-bottom: 6px;">Intersection</div>
+  <button class="ix-btn" data-val="tatibazar" onclick="pickIx(this)">Tati Bazar</button>
+  <button class="ix-btn" data-val="sayedabad-closed" onclick="pickIx(this)">Sayedabad (Closed)</button>
+  <button class="ix-btn" data-val="sayedabad-open" onclick="pickIx(this)">Sayedabad (Open)</button>
+  <button class="ix-btn" data-val="maniknagar" onclick="pickIx(this)">Maniknagar</button>
+  <button class="ix-btn" data-val="atishdipankar" onclick="pickIx(this)">Atish Dipankar</button>
+  <button class="ix-btn" data-val="khilgaon" onclick="pickIx(this)">Khilgaon Railgate</button>
+  <button class="ix-btn" data-val="policefari" onclick="pickIx(this)">Police Fari</button>
+</div>
+
+<a id="ixLink" href="/images/ix-tatibazar.png" target="_blank" title="Click to open full size">
+<img id="ixMap" class="tldframe" src="/images/ix-tatibazar.png" alt="Intersection design">
+</a>
+
+<p><em id="ixCaption">Tati Bazar intersection, conceptual design.</em></p>
 
 <style>
 .mapframe {
@@ -181,7 +206,7 @@ Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
   .mapembed { height: 600px; }
 }
 .purpose-btn, .year-btn, .pa-btn, .pa-year-btn,
-.tld-btn, .tld-year-btn, .as-year-btn, .as-sc-btn {
+.tld-btn, .tld-year-btn, .as-year-btn, .as-sc-btn, .ix-btn {
   padding: 7px 16px;
   margin-right: 6px;
   margin-bottom: 6px;
@@ -193,7 +218,8 @@ Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
   font-size: 14px;
 }
 .purpose-btn.active, .year-btn.active, .pa-btn.active, .pa-year-btn.active,
-.tld-btn.active, .tld-year-btn.active, .as-year-btn.active, .as-sc-btn.active {
+.tld-btn.active, .tld-year-btn.active, .as-year-btn.active,
+.as-sc-btn.active, .ix-btn.active {
   background: #1F4E79;
   color: #fff;
   border-color: #1F4E79;
@@ -209,6 +235,7 @@ var currentTld = 'hbw';
 var currentTldYear = 'base';
 var currentAsYear = 'base';
 var currentScenario = 'donothing';
+var currentIx = 'tatibazar';
 
 var paNames = { prod: 'Trip production by zone', attr: 'Trip attraction by zone' };
 var purposeNames = {
@@ -222,6 +249,15 @@ var scenarioNames = {
   donothing: 'Do Nothing scenario',
   bau: 'Business as Usual scenario',
   masterplan: 'Masterplan scenario'
+};
+var ixNames = {
+  'tatibazar': 'Tati Bazar',
+  'sayedabad-closed': 'Sayedabad (closed intersection)',
+  'sayedabad-open': 'Sayedabad (open intersection)',
+  'maniknagar': 'Maniknagar',
+  'atishdipankar': 'Atish Dipankar',
+  'khilgaon': 'Khilgaon Railgate',
+  'policefari': 'Police Fari'
 };
 
 function setActive(group, btn) {
@@ -316,6 +352,15 @@ function pickScenario(btn) {
   asRefresh();
 }
 
+function pickIx(btn) {
+  currentIx = btn.dataset.val;
+  setActive('ix-btn', btn);
+  var path = '/images/ix-' + currentIx + '.png';
+  document.getElementById('ixMap').src = path;
+  document.getElementById('ixLink').href = path;
+  document.getElementById('ixCaption').innerText = ixNames[currentIx] + ' intersection, conceptual design.';
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('.pa-btn[data-val="prod"]').classList.add('active');
   document.querySelector('.pa-year-btn[data-val="base"]').classList.add('active');
@@ -325,5 +370,6 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('.tld-year-btn[data-val="base"]').classList.add('active');
   document.querySelector('.as-year-btn[data-val="base"]').classList.add('active');
   document.querySelector('.as-sc-btn[data-val="donothing"]').classList.add('active');
+  document.querySelector('.ix-btn[data-val="tatibazar"]').classList.add('active');
 });
 </script>
