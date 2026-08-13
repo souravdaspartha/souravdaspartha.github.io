@@ -157,15 +157,11 @@ Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
 Conceptual intersection layouts prepared for locations across Dhaka South City Corporation. Each design responds to observed turning movements, pedestrian demand and capacity constraints at the site, developed in Civil 3D alongside traffic, delay and parking survey analysis.
 </p>
 
-<div style="margin: 18px 0 18px;">
-  <div style="font-size: 13px; font-weight: 600; margin-bottom: 6px;">Intersection</div>
-  <button class="ix-btn" data-val="tatibazar" onclick="pickIx(this)">Tati Bazar</button>
-  <button class="ix-btn" data-val="sayedabad-closed" onclick="pickIx(this)">Sayedabad (Closed)</button>
-  <button class="ix-btn" data-val="sayedabad-open" onclick="pickIx(this)">Sayedabad (Open)</button>
-  <button class="ix-btn" data-val="maniknagar" onclick="pickIx(this)">Maniknagar</button>
-  <button class="ix-btn" data-val="atishdipankar" onclick="pickIx(this)">Atish Dipankar</button>
-  <button class="ix-btn" data-val="khilgaon" onclick="pickIx(this)">Khilgaon Railgate</button>
-  <button class="ix-btn" data-val="policefari" onclick="pickIx(this)">Police Fari</button>
+<div style="display: flex; align-items: center; gap: 14px; margin: 18px 0;">
+  <button class="nav-btn" onclick="stepIx(-1)" title="Previous">&#8592;</button>
+  <span id="ixLabel" style="font-size: 15px; font-weight: 600;">Tati Bazar</span>
+  <span id="ixCount" style="font-size: 13px; color: #888;">1 / 7</span>
+  <button class="nav-btn" onclick="stepIx(1)" title="Next">&#8594;</button>
 </div>
 
 <a id="ixLink" href="/images/ix-tatibazar.png" target="_blank" title="Click to open full size">
@@ -205,8 +201,23 @@ Conceptual intersection layouts prepared for locations across Dhaka South City C
 @media (max-width: 700px) {
   .mapembed { height: 600px; }
 }
+.nav-btn {
+  padding: 6px 14px;
+  cursor: pointer;
+  border: 1px solid rgba(128,128,128,0.4);
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font-size: 16px;
+  line-height: 1;
+}
+.nav-btn:hover {
+  background: #1F4E79;
+  color: #fff;
+  border-color: #1F4E79;
+}
 .purpose-btn, .year-btn, .pa-btn, .pa-year-btn,
-.tld-btn, .tld-year-btn, .as-year-btn, .as-sc-btn, .ix-btn {
+.tld-btn, .tld-year-btn, .as-year-btn, .as-sc-btn {
   padding: 7px 16px;
   margin-right: 6px;
   margin-bottom: 6px;
@@ -218,8 +229,7 @@ Conceptual intersection layouts prepared for locations across Dhaka South City C
   font-size: 14px;
 }
 .purpose-btn.active, .year-btn.active, .pa-btn.active, .pa-year-btn.active,
-.tld-btn.active, .tld-year-btn.active, .as-year-btn.active,
-.as-sc-btn.active, .ix-btn.active {
+.tld-btn.active, .tld-year-btn.active, .as-year-btn.active, .as-sc-btn.active {
   background: #1F4E79;
   color: #fff;
   border-color: #1F4E79;
@@ -235,7 +245,6 @@ var currentTld = 'hbw';
 var currentTldYear = 'base';
 var currentAsYear = 'base';
 var currentScenario = 'donothing';
-var currentIx = 'tatibazar';
 
 var paNames = { prod: 'Trip production by zone', attr: 'Trip attraction by zone' };
 var purposeNames = {
@@ -250,15 +259,17 @@ var scenarioNames = {
   bau: 'Business as Usual scenario',
   masterplan: 'Masterplan scenario'
 };
-var ixNames = {
-  'tatibazar': 'Tati Bazar',
-  'sayedabad-closed': 'Sayedabad (closed intersection)',
-  'sayedabad-open': 'Sayedabad (open intersection)',
-  'maniknagar': 'Maniknagar',
-  'atishdipankar': 'Atish Dipankar',
-  'khilgaon': 'Khilgaon Railgate',
-  'policefari': 'Police Fari'
-};
+
+var ixList = [
+  { file: 'ix-tatibazar',        label: 'Tati Bazar',          caption: 'Tati Bazar' },
+  { file: 'ix-sayedabad-closed', label: 'Sayedabad (Closed)',  caption: 'Sayedabad (closed intersection)' },
+  { file: 'ix-sayedabad-open',   label: 'Sayedabad (Open)',    caption: 'Sayedabad (open intersection)' },
+  { file: 'ix-maniknagar',       label: 'Maniknagar',          caption: 'Maniknagar' },
+  { file: 'ix-atishdipankar',    label: 'Atish Dipankar',      caption: 'Atish Dipankar' },
+  { file: 'ix-khilgaon',         label: 'Khilgaon Railgate',   caption: 'Khilgaon Railgate' },
+  { file: 'ix-policefari',       label: 'Police Fari',         caption: 'Police Fari' }
+];
+var ixIndex = 0;
 
 function setActive(group, btn) {
   document.querySelectorAll('.' + group).forEach(function (b) {
@@ -352,13 +363,15 @@ function pickScenario(btn) {
   asRefresh();
 }
 
-function pickIx(btn) {
-  currentIx = btn.dataset.val;
-  setActive('ix-btn', btn);
-  var path = '/images/ix-' + currentIx + '.png';
+function stepIx(direction) {
+  ixIndex = (ixIndex + direction + ixList.length) % ixList.length;
+  var item = ixList[ixIndex];
+  var path = '/images/' + item.file + '.png';
   document.getElementById('ixMap').src = path;
   document.getElementById('ixLink').href = path;
-  document.getElementById('ixCaption').innerText = ixNames[currentIx] + ' intersection, conceptual design.';
+  document.getElementById('ixLabel').innerText = item.label;
+  document.getElementById('ixCount').innerText = (ixIndex + 1) + ' / ' + ixList.length;
+  document.getElementById('ixCaption').innerText = item.caption + ' intersection, conceptual design.';
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -370,6 +383,5 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('.tld-year-btn[data-val="base"]').classList.add('active');
   document.querySelector('.as-year-btn[data-val="base"]').classList.add('active');
   document.querySelector('.as-sc-btn[data-val="donothing"]').classList.add('active');
-  document.querySelector('.ix-btn[data-val="tatibazar"]').classList.add('active');
 });
 </script>
