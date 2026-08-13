@@ -151,7 +151,7 @@ Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
 
 ---
 
-## Intersection Design, Dhaka South City Corporation Area
+## Intersection Design, Dhaka South City Corporation
 
 <p style="text-align: justify;">
 Conceptual intersection layouts prepared for locations across Dhaka South City Corporation. Each design responds to observed turning movements, pedestrian demand and capacity constraints at the site, developed in Civil 3D alongside traffic, delay and parking survey analysis.
@@ -169,7 +169,7 @@ Conceptual intersection layouts prepared for locations across Dhaka South City C
 </div>
 
 <a id="ixLink" href="/images/ix-tatibazar.png" target="_blank" title="Click to open full size">
-<img id="ixMap" class="tldframe" src="/images/ix-tatibazar.png" alt="Intersection design">
+<img id="ixMap" class="mapframe" src="/images/ix-tatibazar.png" alt="Intersection design">
 </a>
 
 <p><em id="ixCaption">Tati Bazar intersection, conceptual design.</em></p>
