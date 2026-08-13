@@ -137,7 +137,7 @@ Animated mapping of [N] road crashes across Gazipur, playing year by year. The d
 </p>
 
 <iframe class="mapembed"
-        src="/assets/maps/crash-hotspot/accident_hotspot_animated.html"
+        src="/assets/maps/crash-hotspot/accident_hotspot_embed.html?v=2"
         title="Animated road crash density map, Gazipur"
         loading="lazy" frameborder="0">
 </iframe>
@@ -146,7 +146,7 @@ Animated mapping of [N] road crashes across Gazipur, playing year by year. The d
 
 <p style="font-size: 13px; color: #777;">
 Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
-<a href="/assets/maps/crash-hotspot/accident_hotspot_embed.html" target="_blank">Open full size</a>
+<a href="/assets/maps/crash-hotspot/accident_hotspot_animated.html" target="_blank">Open full size</a>
 </p>
 
 <style>
@@ -169,14 +169,14 @@ Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
 }
 .mapembed {
   width: 100%;
-  height: 620px;
+  height: 700px;
   border: 1px solid rgba(0,0,0,0.25);
   box-shadow: 0 8px 24px rgba(0,0,0,0.35);
   border-radius: 4px;
   background: #fff;
 }
 @media (max-width: 700px) {
-  .mapembed { height: 460px; }
+  .mapembed { height: 520px; }
 }
 .purpose-btn, .year-btn, .pa-btn, .pa-year-btn,
 .tld-btn, .tld-year-btn, .as-year-btn, .as-sc-btn {
