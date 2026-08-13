@@ -169,14 +169,15 @@ Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
 
 .mapembed {
   width: 100%;
-  height: 620px;
+  max-width: 550px;
+  height: 760px;
   border: 1px solid rgba(0,0,0,0.25);
   box-shadow: 0 8px 24px rgba(0,0,0,0.35);
   border-radius: 4px;
   background: #fff;
 }
 @media (max-width: 700px) {
-  .mapembed { height: 460px; }
+  .mapembed { height: 560px; }
 }
   
 .purpose-btn, .year-btn, .pa-btn, .pa-year-btn,
