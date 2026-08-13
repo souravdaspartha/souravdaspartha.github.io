@@ -127,6 +127,26 @@ Assigned link volumes from the traffic assignment step of the four-step travel d
 </a>
 
 <p><em id="asCaption">Assigned link volumes, base year.</em></p>
+---
+
+## Road Crash Density, Gazipur
+
+<p style="text-align: justify;">
+Animated mapping of [N] road crashes across Gazipur, playing year by year. The density surface is weighted by severity, with fatal crashes carrying five times the influence of a damage-only collision. The colour scale is held fixed across all years, so intensity is comparable between frames rather than rescaled within each one. Dashed circles mark the five highest-concentration locations identified by DBSCAN clustering at a 500 m threshold: Board Bazar, Vogra, Tongi, Salna and Konabari.
+</p>
+
+<iframe class="mapembed"
+        src="/assets/maps/crash-hotspot/accident_hotspot_animated.html"
+        title="Animated road crash density map, Gazipur"
+        loading="lazy" frameborder="0">
+</iframe>
+
+<p><em>Severity-weighted crash density by year, [year]&ndash;[year].</em></p>
+
+<p style="font-size: 13px; color: #777;">
+Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
+<a href="/assets/maps/crash-hotspot/accident_hotspot_animated.html" target="_blank">Open full size</a>
+</p>
 
 <style>
 .mapframe {
@@ -146,6 +166,19 @@ Assigned link volumes from the traffic assignment step of the four-step travel d
   border-radius: 4px;
   background: #fff;
 }
+
+.mapembed {
+  width: 100%;
+  height: 620px;
+  border: 1px solid rgba(0,0,0,0.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  border-radius: 4px;
+  background: #fff;
+}
+@media (max-width: 700px) {
+  .mapembed { height: 460px; }
+}
+  
 .purpose-btn, .year-btn, .pa-btn, .pa-year-btn,
 .tld-btn, .tld-year-btn, .as-year-btn, .as-sc-btn {
   padding: 7px 16px;
