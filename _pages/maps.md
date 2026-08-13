@@ -133,7 +133,7 @@ Assigned link volumes from the traffic assignment step of the four-step travel d
 ## Road Crash Density, Gazipur
 
 <p style="text-align: justify;">
-Animated mapping of [N] road crashes across Gazipur, playing year by year. The density surface is weighted by severity, with fatal crashes carrying five times the influence of a damage-only collision. The colour scale is held fixed across all years, so intensity is comparable between frames rather than rescaled within each one. Dashed circles mark the five highest-concentration locations identified by DBSCAN clustering at a 500 m threshold: Board Bazar, Vogra, Tongi, Salna and Konabari.
+Animated mapping of 322 road crashes across Gazipur, playing year by year. The density surface is weighted by severity, with fatal crashes carrying five times the influence of a damage-only collision. The colour scale is held fixed across all years, so intensity is comparable between frames rather than rescaled within each one. Dashed circles mark the five highest-concentration locations identified by Density-Based Spatial Clustering of Applications with Noise (DBSCAN) clustering at a 500 m threshold: Board Bazar, Vogra, Tongi, Salna and Konabari.
 </p>
 
 <iframe class="mapembed"
@@ -142,7 +142,7 @@ Animated mapping of [N] road crashes across Gazipur, playing year by year. The d
         loading="lazy" frameborder="0">
 </iframe>
 
-<p><em>Severity-weighted crash density by year, [year]&ndash;[year].</em></p>
+<p><em>Severity-weighted crash density by year, [2019]&ndash;[2024].</em></p>
 
 <p style="font-size: 13px; color: #777;">
 Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
