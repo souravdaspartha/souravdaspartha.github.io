@@ -146,7 +146,7 @@ Animated mapping of [N] road crashes across Gazipur, playing year by year. The d
 
 <p style="font-size: 13px; color: #777;">
 Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
-<a href="/assets/maps/crash-hotspot/accident_hotspot_animated.html" target="_blank">Open full size</a>
+<a href="/assets/maps/crash-hotspot/accident_hotspot_embed.html" target="_blank">Open full size</a>
 </p>
 
 <style>
