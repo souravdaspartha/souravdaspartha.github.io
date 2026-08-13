@@ -151,7 +151,7 @@ Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
 
 ---
 
-## Intersection Design, Dhaka South City Corporation
+## Intersection Design, Dhaka South City Corporation Area
 
 <p style="text-align: justify;">
 Conceptual intersection layouts prepared for locations across Dhaka South City Corporation. Each design responds to observed turning movements, pedestrian demand and capacity constraints at the site, developed in Civil 3D alongside traffic, delay and parking survey analysis.
