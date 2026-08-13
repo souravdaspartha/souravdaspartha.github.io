@@ -142,7 +142,7 @@ Animated mapping of 332 road crashes across Gazipur City Corporation Area, playi
         loading="lazy" frameborder="0">
 </iframe>
 
-<p><em>Severity-weighted crash density by year, [2019]&ndash;[2024].</em></p>
+<p><em>Severity-weighted crash density by year, [2020]&ndash;[2024].</em></p>
 
 <p style="font-size: 13px; color: #777;">
 Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
