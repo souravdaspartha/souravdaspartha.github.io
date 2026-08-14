@@ -37,7 +37,7 @@ I am a Transport Planner and Travel Demand Modeller specializing in travel deman
 </tr>
 </table>
 
-### **Theses**
+## 🔬 Research
 
 - **"Traffic Flow and Bus Demand Rationalization: A Case Study of the Dhanmondi 27 to Lalbagh Corridor"** — *MS Thesis*
 - **"Perception of Tourists about Transportation in Selecting Tourist Spots: Tanguar Haor and Jadukata River"** — *Undergraduate Thesis*
