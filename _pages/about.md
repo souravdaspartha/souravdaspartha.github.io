@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Transport planner and modeller in Dhaka, Bangladesh. I build travel demand models for cities where the data is thin, the traffic is mixed, and a large share of the network runs on informal modes. Currently a **Junior Traffic and Transportation Planner** at Nippon Koei Bangladesh Ltd.
+I am a Transport Planner and Travel Demand Modeller specializing in travel demand forecasting for data-scarce, mixed-traffic environments. Based in Dhaka, Bangladesh, I focus on integrating informal transport networks into traditional modelling frameworks. I currently work as a Junior Traffic and Transportation Planner at Nippon Koei Bangladesh Ltd., where I turn raw field data into practical, decision-ready insights.
 
 - 🌍 **Expertise**: Four-step Travel Demand Modelling, Network Analysis and Performance Evaluation, Scenario Testing and Impact Assessment, Junction Design & Performance Evaluation, Spatial Analysis.
 - 🔭 **Current Focus**: Four-step Modelling, Traffic Impact Assessment, Traffic Management Plan
@@ -36,14 +36,6 @@ Transport planner and modeller in Dhaka, Bangladesh. I build travel demand model
 <td style="padding: 12px;"><img src="https://img.shields.io/badge/AutoCAD-E51050?style=for-the-badge&logo=autodesk&logoColor=white"> <img src="https://img.shields.io/badge/Civil_3D-0696D7?style=for-the-badge&logo=autodesk&logoColor=white"> <img src="https://img.shields.io/badge/SketchUp-005F9E?style=for-the-badge&logo=sketchup&logoColor=white"></td>
 </tr>
 </table>
-
-## 🔬 Research
-
-### **In Progress**
-
-- **Travel Demand Modelling with Limited Data** — adapting the four-step framework for low-resource urban contexts
-- **Microscopic Modelling of Traffic Emissions** in heterogeneous traffic conditions
-- **The Role of Electric Three-Wheelers** in sustainable urban mobility transitions
 
 ### **Theses**
 
