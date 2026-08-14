@@ -78,6 +78,13 @@ Transport planner and modeller in Dhaka, Bangladesh. I build travel demand model
 - **Urban Transportation Planning** — Bangladesh Institute of Management, 2025
 - **Introduction to R for Planning and Social Science** — Bangladesh Institute of Planners, 2024
 
+<style>
+.page__content p,
+.page__content li {
+  text-align: justify;
+}
+</style>
+
 
 
 
