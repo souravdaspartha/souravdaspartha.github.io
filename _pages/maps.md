@@ -151,22 +151,10 @@ Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
 
 ---
 
-## Nighttime Lights, Bangladesh
+## Nighttime Light Expansion, Bangladesh 2013&ndash;2024
 
 <p style="text-align: justify;">
-Annual composites of Visible Infrared Imaging Radiometer Suite (VIIRS) Day/Night Band imagery, showing observed nighttime radiance across Bangladesh from 2013 to 2024. The Day/Night Band is a low-light sensor carried on the Suomi-NPP and NOAA-20 satellites, sensitive enough to detect street lighting, industrial sites and lit settlements from orbit at roughly 500 m resolution.
-</p>
-
-<p style="text-align: justify;">
-Monthly cloud-free composites were filtered to each calendar year and reduced to a median value per pixel, then clipped to the national boundary. A median rather than a mean was used because it is insensitive to individual months lost to monsoon cloud, which would otherwise drag annual values downward in an uneven and misleading way. Background noise below 0.5 nW/cm&sup2;/sr was set to zero and extreme outliers capped, and the radiance stretch was held fixed at 0&ndash;5 nW/cm&sup2;/sr with a gamma of 0.5 across every frame. That fixed stretch is what makes the animation interpretable: if each year were scaled to its own range, the sequence would show the colour scale changing rather than the light itself.
-</p>
-
-<p style="text-align: justify;">
-Nationally, mean radiance rose from approximately 0.19 to 0.80 nW/cm&sup2;/sr over the twelve years, with the standard deviation widening from 1.03 to 1.81. The spatial pattern is as informative as the magnitude. Growth concentrates around Dhaka and along the Dhaka&ndash;Chattogram corridor, while the western and northern districts show a broader filling-in that reflects the extension of grid coverage into previously unlit rural areas rather than the intensification of existing centres. Chattogram, Khulna, Rajshahi and Sylhet remain distinct as secondary nodes throughout. The Sundarbans and the Chittagong Hill Tracts stay dark across the full period, which serves as a useful check that the processing has not introduced spurious brightness.
-</p>
-
-<p style="text-align: justify;">
-One characteristic of the data deserves emphasis. VIIRS sits in a sun-synchronous polar orbit with a nominal overpass near 1:30 AM local solar time, so each pixel represents a single observation in the middle of the night. This is not evening activity. What is captured is street lighting, ports, industrial night operation and other continuously running infrastructure, while residential and commercial lighting at eight or nine in the evening is largely absent from the signal. Night lights are frequently read as a proxy for economic activity or population, and they are a reasonable one, but the specific time of acquisition constrains what can legitimately be inferred.
+Annual composites of VIIRS Day/Night Band imagery, showing observed nighttime radiance across Bangladesh from 2013 to 2024. Monthly cloud-free composites were reduced to an annual median per pixel and clipped to the national boundary, with the radiance stretch held fixed across every frame so that years are directly comparable. Mean radiance rose nationally from about 0.19 to 0.80 nW/cm&sup2;/sr over the period, concentrating around Dhaka and the Dhaka&ndash;Chattogram corridor while filling in across the western and northern districts.
 </p>
 
 <a id="ntlLink" href="/images/bgd_ntl.gif" target="_blank" title="Click to open full size">
@@ -176,7 +164,8 @@ One characteristic of the data deserves emphasis. VIIRS sits in a sun-synchronou
 <p><em>Annual median nighttime radiance, 2013&ndash;2024.</em></p>
 
 <p style="font-size: 13px; color: #777;">
-Composites processed in Google Earth Engine; raster preparation, cartography and frame export automated in ArcGIS Pro via arcpy; animation assembled in Python. Data: Earth Observation Group, Payne Institute for Public Policy, Colorado School of Mines.
+Processed in Google Earth Engine; cartography and frame export in ArcGIS Pro via arcpy. &nbsp;|&nbsp;
+<a href="https://eogdata.mines.edu/products/vnl/" target="_blank">Data: Earth Observation Group</a>
 </p>
 
 ---
@@ -220,7 +209,7 @@ Conceptual intersection layouts prepared for locations across Dhaka South City C
 .ntlframe {
   width: 100%;
   max-width: 450px;
-  border: 1px solid rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.6);
   box-shadow: 0 8px 24px rgba(0,0,0,0.35);
   border-radius: 4px;
   background: #000;
