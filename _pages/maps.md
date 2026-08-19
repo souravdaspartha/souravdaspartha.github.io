@@ -170,6 +170,30 @@ Processed in Google Earth Engine; cartography and frame export in ArcGIS Pro via
 
 ---
 
+## Bus Route Overlap, Dhaka City
+
+<p style="text-align: justify;">
+Route overlap across the 98 active bus routes operating in Dhaka. Each corridor is weighted by the number of routes running along it, with line width scaled to that count. Route alignments were digitised from the published network and simplified into 222 corridor segments, so that each stretch of road carries a single readable value rather than a count that changes block by block. The busiest corridor carries 26 of the 98 routes, concentrated on the north&ndash;south spine through Gulistan and Sayedabad, while much of the network beyond it is served by four routes or fewer. The animated view builds the network up one class at a time, showing how little of the city is reached before the heaviest corridors appear.
+</p>
+
+<div style="margin: 18px 0 18px;">
+  <div style="font-size: 13px; font-weight: 600; margin-bottom: 6px;">View</div>
+  <button class="bro-btn" data-val="static" onclick="pickBro(this)">Static</button>
+  <button class="bro-btn" data-val="animated" onclick="pickBro(this)">Animated</button>
+</div>
+
+<a id="broLink" href="/images/dhaka-city-bus-route-overlap.png" target="_blank" title="Click to open full size">
+<img id="broMap" class="broframe" src="/images/dhaka-city-bus-route-overlap.png" alt="Bus route overlap map of Dhaka City">
+</a>
+
+<p><em id="broCaption">Number of bus routes per corridor, all classes.</em></p>
+
+<p style="font-size: 13px; color: #777;">
+Route data digitised in Google Earth; corridor network, analysis and frame export in ArcGIS Pro via arcpy.
+</p>
+
+---
+
 ## Intersection Design, Dhaka South City Corporation
 
 <p style="text-align: justify;">
@@ -215,6 +239,15 @@ Conceptual intersection layouts prepared for locations across Dhaka South City C
   background: #000;
   display: block;
 }
+.broframe {
+  width: 100%;
+  max-width: 450px;
+  border: 1px solid rgba(0,0,0,0.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  border-radius: 4px;
+  background: #fff;
+  display: block;
+}
 .mapembed {
   width: 100%;
   max-width: 780px;
@@ -244,7 +277,7 @@ Conceptual intersection layouts prepared for locations across Dhaka South City C
   border-color: #1F4E79;
 }
 .purpose-btn, .year-btn, .pa-btn, .pa-year-btn,
-.tld-btn, .tld-year-btn, .as-year-btn, .as-sc-btn {
+.tld-btn, .tld-year-btn, .as-year-btn, .as-sc-btn, .bro-btn {
   padding: 7px 16px;
   margin-right: 6px;
   margin-bottom: 6px;
@@ -256,7 +289,8 @@ Conceptual intersection layouts prepared for locations across Dhaka South City C
   font-size: 14px;
 }
 .purpose-btn.active, .year-btn.active, .pa-btn.active, .pa-year-btn.active,
-.tld-btn.active, .tld-year-btn.active, .as-year-btn.active, .as-sc-btn.active {
+.tld-btn.active, .tld-year-btn.active, .as-year-btn.active, .as-sc-btn.active,
+.bro-btn.active {
   background: #1F4E79;
   color: #fff;
   border-color: #1F4E79;
@@ -285,6 +319,17 @@ var scenarioNames = {
   donothing: 'Do Nothing scenario',
   bau: 'Business as Usual scenario',
   masterplan: 'Masterplan scenario'
+};
+
+var broViews = {
+  static: {
+    ext: 'png',
+    caption: 'Number of bus routes per corridor, all classes.'
+  },
+  animated: {
+    ext: 'gif',
+    caption: 'Corridors added by route count, 1&ndash;4 through 20&ndash;26.'
+  }
 };
 
 var ixList = [
@@ -390,6 +435,15 @@ function pickScenario(btn) {
   asRefresh();
 }
 
+function pickBro(btn) {
+  var view = broViews[btn.dataset.val];
+  setActive('bro-btn', btn);
+  var path = '/images/dhaka-city-bus-route-overlap.' + view.ext;
+  document.getElementById('broMap').src = path;
+  document.getElementById('broLink').href = path;
+  document.getElementById('broCaption').innerHTML = view.caption;
+}
+
 function stepIx(direction) {
   ixIndex = (ixIndex + direction + ixList.length) % ixList.length;
   var item = ixList[ixIndex];
@@ -409,5 +463,6 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('.tld-year-btn[data-val="base"]').classList.add('active');
   document.querySelector('.as-year-btn[data-val="base"]').classList.add('active');
   document.querySelector('.as-sc-btn[data-val="donothing"]').classList.add('active');
+  document.querySelector('.bro-btn[data-val="static"]').classList.add('active');
 });
 </script>
