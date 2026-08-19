@@ -189,7 +189,7 @@ Route overlap across the 98 active bus routes operating in Dhaka. Each corridor 
 <p><em id="broCaption">Number of bus routes per corridor, all classes.</em></p>
 
 <p style="font-size: 13px; color: #777;">
-Route data digitised in Google Earth; corridor network, analysis and frame export in ArcGIS Pro via arcpy.
+Route dizitization, corridor network, analysis and frame export in ArcGIS Pro via arcpy.
 </p>
 
 ---
