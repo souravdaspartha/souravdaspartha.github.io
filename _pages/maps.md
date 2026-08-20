@@ -105,7 +105,7 @@ HBW: home-based work &nbsp;|&nbsp; HBE: home-based education &nbsp;|&nbsp; HBO: 
 ## Highway Assignment, Gazipur City Corporation
 
 <p style="text-align: justify;">
-Assigned link volumes from the traffic assignment step of the four-step travel demand model. Forecast years are presented under three scenarios: Do Nothing, retaining the existing network without intervention; Business as Usual, reflecting committed schemes already in the pipeline; and Masterplan, incorporating the full set of proposed network and demand management measures.
+Assigned link volumes from the traffic assignment step of the four-step travel demand model. Forecast years are presented under three scenarios: Do Nothing, retaining the existing network without any intervention; Business as Usual, reflecting committed schemes already in the pipeline; and Masterplan, incorporating the full set of proposed network and demand management measures.
 </p>
 
 <div style="margin: 18px 0 10px;">
