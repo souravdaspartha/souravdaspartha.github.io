@@ -35,7 +35,7 @@ These maps present zonal trip production and attraction patterns for Gazipur Cit
 ## Trip Desire Lines, Gazipur City Corporation
 
 <p style="text-align: justify;">
-Desire lines from the gravity model developed for the Gazipur Comprehensive Transport Masterplan, produced within a four-step travel demand framework. Each line shows the straight-line demand between two zones, indicating where trips want to go rather than the route they take. Width and colour are scaled to trip volume.
+Desire lines from the gravity model developed for the Gazipur Comprehensive Transport Masterplan, produced within a four-step travel demand framework. Each line shows the straight-line demand between two zones, indicating where trips want to go. Width and colour are scaled to trip volume.
 </p>
 
 <div style="margin: 18px 0 10px;">
