@@ -9,9 +9,11 @@ redirect_from:
 
 I am a Transport Planner and Travel Demand Modeller specializing in travel demand forecasting for data-scarce, mixed-traffic environments. Based in Dhaka, Bangladesh, I focus on integrating informal transport networks into traditional modelling frameworks. I currently work as a Junior Traffic and Transportation Planner at Nippon Koei Bangladesh Ltd., where I turn raw field data into practical, decision-ready insights.
 
-- 🌍 **Expertise**: Four-step Travel Demand Modelling, Network Analysis and Performance Evaluation, Scenario Testing and Impact Assessment, Junction Design & Performance Evaluation, Spatial Analysis.
-- 🔭 **Current Focus**: Four-step Modelling, Traffic Impact Assessment, Traffic Management Plan
-- 💼 **Industry Experience**: Transport Planning, Transit Oriented Development, Road Safety Analysis
+<ul style="list-style: none; padding-left: 0;">
+<li style="margin-bottom: 10px;">🌍 <strong>Expertise</strong>: Four-step Travel Demand Modelling, Network Analysis and Performance Evaluation, Scenario Testing and Impact Assessment, Junction Design &amp; Performance Evaluation, Spatial Analysis.</li>
+<li style="margin-bottom: 10px;">🔭 <strong>Current Focus</strong>: Four-step Modelling, Traffic Impact Assessment, Traffic Management Plan</li>
+<li>💼 <strong>Industry Experience</strong>: Transport Planning, Transit Oriented Development, Road Safety Analysis</li>
+</ul>
 
 ---
 
