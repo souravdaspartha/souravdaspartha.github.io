@@ -10,8 +10,8 @@ author_profile: true
 {% assign employers = "Nippon Koei Bangladesh Ltd.|Engineering and Planning Consultants Ltd.|Image Research and Consultancy Ltd." | split: "|" %}
 
 {% for employer in employers %}
-<details{% if forloop.first %} open{% endif %}>
-<summary><strong>{{ employer }}</strong></summary>
+<details{% if forloop.first %} open{% endif %} style="margin-bottom: 20px;">
+<summary style="font-size: 24px; font-weight: 700; cursor: pointer; padding-bottom: 8px; margin-bottom: 14px; border-bottom: 2px solid rgba(128,128,128,0.35);">{{ employer }}</summary>
 
 {% for post in site.portfolio %}
   {% if post.employer == employer %}
@@ -23,20 +23,6 @@ author_profile: true
 {% endfor %}
 
 <style>
-.page__content details > summary,
-.page__content details > summary strong {
-  font-size: 1.4em !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-}
-
-.page__content details > summary {
-  margin: 28px 0 14px !important;
-  padding-bottom: 8px !important;
-  border-bottom: 2px solid rgba(128,128,128,0.35) !important;
-  cursor: pointer;
-}
-
 .page__content .archive__item-title,
 .page__content .archive__item-title a {
   font-size: 1.05em !important;
