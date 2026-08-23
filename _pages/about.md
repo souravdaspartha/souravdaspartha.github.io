@@ -11,7 +11,6 @@ I am a Transport Planner and Travel Demand Modeller specializing in travel deman
 
 - 🌍 **Expertise**: Four-step Travel Demand Modelling, Network Analysis and Performance Evaluation, Scenario Testing and Impact Assessment, Junction Design & Performance Evaluation, Spatial Analysis.
 - 🔭 **Current Focus**: Four-step Modelling, Traffic Impact Assessment, Traffic Management Plan
-- 🎓 **Education**: MS GIS for Environment and Development, BURP Urban & Regional Planning (Jahangirnagar University)
 - 💼 **Industry Experience**: Transport Planning, Transit Oriented Development, Road Safety Analysis
 
 ---
@@ -39,20 +38,41 @@ I am a Transport Planner and Travel Demand Modeller specializing in travel deman
 
 ---
 
+<h2>🎓 Education</h2>
+
+<div style="border-left: 4px solid #1F4E79; background: rgba(128,128,128,0.06); padding: 14px 18px; margin-bottom: 14px;">
+  <div style="margin-bottom: 8px;">MS in GIS for Environment and Development</div>
+  <div style="margin-bottom: 8px;">Jahangirnagar University</div>
+  <div style="margin-bottom: 8px;">Dhaka, Bangladesh</div>
+  <div style="font-weight: 600;">2019 &ndash; 2022</div>
+</div>
+
+<div style="border-left: 4px solid #1F4E79; background: rgba(128,128,128,0.06); padding: 14px 18px; margin-bottom: 14px;">
+  <div style="margin-bottom: 8px;">Bachelor of Urban and Regional Planning (BURP)</div>
+  <div style="margin-bottom: 8px;">Jahangirnagar University</div>
+  <div style="margin-bottom: 8px;">Dhaka, Bangladesh</div>
+  <div style="font-weight: 600;">2014 &ndash; 2017</div>
+</div>
+
+---
+
 ## 💼 Professional Experience
 
-**Junior Traffic and Transportation Planner | Nippon Koei Bangladesh Ltd.** | *March 2024 – Present*
+**Junior Traffic and Transportation Planner**<br>
+Nippon Koei Bangladesh Ltd. | *March 2024 – Present*
 
 - 🚦 Developed a four-step travel demand model in TransCAD from scratch, including the public transport component
 - 🚛 Conducted freight and truck surveys supporting city-scale freight demand estimation
 - 🗺️ Carried out network preparation, OD matrix development, and highway and public-transport network design
 
-**Junior Urban / Transport Planner | Engineering and Planning Consultants Ltd.** | *September 2021 – February 2024*
+**Junior Urban / Transport Planner**<br>
+Engineering and Planning Consultants Ltd. | *September 2021 – February 2024*
 
 - 🚸 Supervised traffic surveys and assisted in preparing Traffic Management Plans
 - 📐 Contributed to intersection design in Civil 3D across DSCC and World Bank-funded projects
 
-**Junior Urban Planner | Image Research and Consultancy Ltd.** | *October 2018 – August 2021*
+**Junior Urban Planner**<br>
+Image Research and Consultancy Ltd. | *October 2018 – August 2021*
 
 - 🛰️ Built GIS databases from GPS field survey and rectified satellite imagery
 - 🌳 Produced natural-asset and ecosystem maps for UN-Habitat's Urban LEDS II programme
@@ -71,9 +91,3 @@ I am a Transport Planner and Travel Demand Modeller specializing in travel deman
   text-align: justify;
 }
 </style>
-
-
-
-
-
-
