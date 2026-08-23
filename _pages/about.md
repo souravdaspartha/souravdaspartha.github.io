@@ -56,30 +56,45 @@ I am a Transport Planner and Travel Demand Modeller specializing in travel deman
 
 ---
 
-## 💼 Professional Experience
+<h2>💼 Professional Experience</h2>
 
-**Junior Traffic and Transportation Planner**<br>
-Nippon Koei Bangladesh Ltd. | *March 2024 – Present*
+<div style="border-left: 4px solid #1F4E79; background: rgba(128,128,128,0.06); padding: 14px 18px; margin-bottom: 14px;">
+  <div style="font-weight: 600; margin-bottom: 6px;">Junior Traffic and Transportation Planner</div>
+  <div style="margin-bottom: 6px;">Nippon Koei Bangladesh Ltd.</div>
+  <div style="margin-bottom: 10px;">Dhaka, Bangladesh</div>
+  <div style="font-weight: 600; margin-bottom: 10px;">March 2024 &ndash; Present</div>
+  <ul style="margin: 0; padding-left: 20px;">
+    <li style="margin-bottom: 6px;">Developed a four-step travel demand model in TransCAD from scratch, including the public transport component</li>
+    <li style="margin-bottom: 6px;">Conducted freight and truck surveys supporting city-scale freight demand estimation</li>
+    <li>Carried out network preparation, OD matrix development, and highway and public-transport network design</li>
+  </ul>
+</div>
 
-- 🚦 Developed a four-step travel demand model in TransCAD from scratch, including the public transport component
-- 🚛 Conducted freight and truck surveys supporting city-scale freight demand estimation
-- 🗺️ Carried out network preparation, OD matrix development, and highway and public-transport network design
+<div style="border-left: 4px solid #1F4E79; background: rgba(128,128,128,0.06); padding: 14px 18px; margin-bottom: 14px;">
+  <div style="font-weight: 600; margin-bottom: 6px;">Junior Urban / Transport Planner</div>
+  <div style="margin-bottom: 6px;">Engineering and Planning Consultants Ltd.</div>
+  <div style="margin-bottom: 10px;">Dhaka, Bangladesh</div>
+  <div style="font-weight: 600; margin-bottom: 10px;">September 2021 &ndash; February 2024</div>
+  <ul style="margin: 0; padding-left: 20px;">
+    <li style="margin-bottom: 6px;">Supervised traffic surveys and assisted in preparing Traffic Management Plans</li>
+    <li>Contributed to intersection design in Civil 3D across DSCC and World Bank-funded projects</li>
+  </ul>
+</div>
 
-**Junior Urban / Transport Planner**<br>
-Engineering and Planning Consultants Ltd. | *September 2021 – February 2024*
-
-- 🚸 Supervised traffic surveys and assisted in preparing Traffic Management Plans
-- 📐 Contributed to intersection design in Civil 3D across DSCC and World Bank-funded projects
-
-**Junior Urban Planner**<br>
-Image Research and Consultancy Ltd. | *October 2018 – August 2021*
-
-- 🛰️ Built GIS databases from GPS field survey and rectified satellite imagery
-- 🌳 Produced natural-asset and ecosystem maps for UN-Habitat's Urban LEDS II programme
+<div style="border-left: 4px solid #1F4E79; background: rgba(128,128,128,0.06); padding: 14px 18px; margin-bottom: 14px;">
+  <div style="font-weight: 600; margin-bottom: 6px;">Junior Urban Planner</div>
+  <div style="margin-bottom: 6px;">Image Research and Consultancy Ltd.</div>
+  <div style="margin-bottom: 10px;">Dhaka, Bangladesh</div>
+  <div style="font-weight: 600; margin-bottom: 10px;">October 2018 &ndash; August 2021</div>
+  <ul style="margin: 0; padding-left: 20px;">
+    <li style="margin-bottom: 6px;">Built GIS databases from GPS field survey and rectified satellite imagery</li>
+    <li>Produced natural-asset and ecosystem maps for UN-Habitat's Urban LEDS II programme</li>
+  </ul>
+</div>
 
 ---
 
-## 🎓 Training
+## 📚 Training
 
 - **Travel Demand Modelling** — Dhaka Transport Coordination Authority (DTCA), 2026
 - **Urban Transportation Planning** — Bangladesh Institute of Management, 2025
