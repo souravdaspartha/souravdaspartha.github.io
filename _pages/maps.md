@@ -148,7 +148,7 @@ Animated mapping of 327 road crashes across Gazipur City Corporation Area, playi
   Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
   <a href="/assets/maps/crash-hotspot/accident_hotspot_animated.html" target="_blank">Open full size</a>
   &nbsp;|&nbsp;
-  <a href="https://github.com/souravdaspartha/gazipur-road-crash-analysis" target="_blank" rel="noopener noreferrer">View source code</a>
+  <a href="https://github.com/souravdaspartha/gazipur-road-crash-analysis" target="_blank" rel="noopener noreferrer">View Source Code</a>
 </p>
 
 ---
