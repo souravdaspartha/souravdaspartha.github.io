@@ -145,8 +145,10 @@ Animated mapping of 327 road crashes across Gazipur City Corporation Area, playi
 <p><em>Severity-weighted crash density by year, [2020]&ndash;[2024].</em></p>
 
 <p style="font-size: 13px; color: #777;">
-Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
-<a href="/assets/maps/crash-hotspot/accident_hotspot_animated.html" target="_blank">Open full size</a>
+  Built in Python with pandas, scikit-learn and folium. &nbsp;|&nbsp;
+  <a href="/assets/maps/crash-hotspot/accident_hotspot_animated.html" target="_blank">Open full size</a>
+  &nbsp;|&nbsp;
+  <a href="https://github.com/souravdaspartha/gazipur-road-crash-analysis" target="_blank" rel="noopener noreferrer">View source code</a>
 </p>
 
 ---
